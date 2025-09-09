@@ -57,7 +57,7 @@ export default function NeuromarketingSection() {
         {/* Left Text Block - Bottom Left */}
         <div className="absolute bottom-20 left-8 max-w-md">
           <p className="text-white text-lg md:text-xl leading-relaxed font-light">
-            The brain doesn't buy that – it buys<br />
+            The brain doesn&apos;t buy that – it buys<br />
             consistency, emotional resonance, and story<br />
             that sticks.
           </p>

@@ -18,7 +18,7 @@ export default function PortfolioSection() {
           
           <div className="text-gray-300 text-base md:text-lg max-w-lg mx-auto">
             <p className="mb-1">Every brand here started with siyappa</p>
-            <p>and ended with a solid "wah!"</p>
+            <p>and ended with a solid &quot;wah!&quot;</p>
           </div>
         </div>
 
