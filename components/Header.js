@@ -11,105 +11,53 @@ export default function Header() {
 
   const isActive = (path) => pathname === path
 
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/services', label: 'Services' },
+    { href: '/work', label: 'Work' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
+  ]
+
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-         {/* Logo */}
-<div className="flex items-center">
-  <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
-    <Image 
-      src="/images/logo.png"
-      alt="Social Siyappa Logo"
-      width={64} 
-      height={64} 
-      className="object-contain"
-    />
-  </div>
-</div>
-
-
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <div className="w-14 h-14 rounded-lg overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Social Siyappa Logo"
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-10">
-            <Link 
-              href="/" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              Home
-              {isActive('/') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
-            <Link 
-              href="/about" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/about') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              About
-              {isActive('/about') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
-            <Link 
-              href="/services" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/services') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              Services
-              {isActive('/services') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
-            <Link 
-              href="/work" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/work') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              Work
-              {isActive('/work') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
-            <Link 
-              href="/blog" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/blog') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              Blog
-              {isActive('/blog') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
-            <Link 
-              href="/contact" 
-              className={`relative font-medium transition-colors duration-200 ${
-                isActive('/contact') 
-                  ? 'text-gray-900 text-base' 
-                  : 'text-gray-600 text-sm hover:text-gray-900'
-              }`}
-            >
-              Contact
-              {isActive('/contact') && (
-                <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
-              )}
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`relative font-medium transition-colors duration-200 ${
+                  isActive(href)
+                    ? 'text-gray-900 text-base'
+                    : 'text-gray-600 text-sm hover:text-gray-900'
+                }`}
+              >
+                {label}
+                {isActive(href) && (
+                  <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
+                )}
+              </Link>
+            ))}
           </nav>
 
           {/* CTA Button */}
@@ -120,106 +68,55 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button 
-            className="lg:hidden flex flex-col items-center justify-center w-6 h-6 space-y-1.5"
+          <button
+            className="lg:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1.5"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span
+              className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : ''
+              }`}
+            ></span>
+            <span
+              className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}
+            ></span>
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+        <div
+          className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          } overflow-hidden`}
+        >
           <nav className="py-6 space-y-4 border-t border-gray-100">
-            <Link 
-              href="/" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-              {isActive('/') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
-            <Link 
-              href="/about" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/about') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-              {isActive('/about') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
-            <Link 
-              href="/services" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/services') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-              {isActive('/services') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
-            <Link 
-              href="/work" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/work') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Work
-              {isActive('/work') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
-            <Link 
-              href="/blog" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/blog') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-              {isActive('/blog') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
-            <Link 
-              href="/contact" 
-              className={`block font-medium transition-colors duration-200 ${
-                isActive('/contact') 
-                  ? 'text-gray-900 text-lg' 
-                  : 'text-gray-600 text-base hover:text-gray-900'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-              {isActive('/contact') && (
-                <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
-              )}
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`block font-medium transition-colors duration-200 ${
+                  isActive(href)
+                    ? 'text-gray-900 text-lg'
+                    : 'text-gray-600 text-base hover:text-gray-900'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+                {isActive(href) && (
+                  <span className="block w-8 h-0.5 bg-black rounded-full mt-1"></span>
+                )}
+              </Link>
+            ))}
             <div className="pt-4">
-              <button 
+              <button
                 className="w-full bg-gray-900 hover:bg-gray-800 text-white text-base font-medium px-6 py-3 rounded-lg transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >

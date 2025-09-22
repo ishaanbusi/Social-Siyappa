@@ -40,10 +40,10 @@ export default function ContactFormsSection() {
   }
 
   return (
-    <section className="min-h-screen flex">
+    <section className="min-h-screen flex flex-col lg:flex-row">
       
       {/* Left Form - Black Background */}
-      <div className="flex-1 bg-black text-white p-12 flex flex-col justify-center">
+      <div className="flex-1 bg-black text-white p-8 md:p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto w-full">
           <form onSubmit={handleLeftSubmit} className="space-y-6">
             
@@ -108,15 +108,15 @@ export default function ContactFormsSection() {
         </div>
       </div>
 
-      {/* Dividing Line */}
-      <div className="w-px bg-gray-300"></div>
+      {/* Dividing Line (hidden on mobile) */}
+      <div className="hidden lg:block w-px bg-gray-300"></div>
 
       {/* Right Form - White Background with Card */}
-      <div className="flex-1 bg-white p-12 flex flex-col justify-center">
+      <div className="flex-1 bg-black p-8 md:p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto w-full">
           
           {/* Newsletter Card */}
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 md:p-8">
             
             {/* Header */}
             <div className="text-center mb-8">
