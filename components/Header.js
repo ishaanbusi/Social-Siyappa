@@ -15,12 +15,20 @@ export default function Header() {
     <header className="bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SOCIAL SIYAPPA</span>
-            </div>
-          </div>
+         {/* Logo */}
+<div className="flex items-center">
+  <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
+    <Image 
+      src="/images/logo.png"
+      alt="Social Siyappa Logo"
+      width={64} 
+      height={64} 
+      className="object-contain"
+    />
+  </div>
+</div>
+
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-10">
