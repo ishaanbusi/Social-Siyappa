@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function ServicesSection() {
   const [animatedTags, setAnimatedTags] = useState([])
@@ -79,27 +80,17 @@ export default function ServicesSection() {
       </div>
 
       {/* Floating Service Tags - Responsive stage */}
-      <div className="relative w-full max-w-5xl h-56 sm:h-64 md:h-72 lg:h-80 flex items-center justify-center">
-        {services.map((service, index) => {
-          const pos = positions[index] || { top: '50%', left: '50%', rotation: '0deg' }
-          return (
-            <div
-              key={index}
-              className={`absolute bg-gray-900 text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-medium whitespace-nowrap cursor-pointer transition-all duration-500 hover:scale-110 hover:bg-gray-800 hover:shadow-lg ${
-                animatedTags.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{
-                top: pos.top,
-                left: pos.left,
-                transform: `translate(-50%, -50%) rotate(${pos.rotation})`,
-                transitionDelay: `${index * 80}ms`,
-              }}
-            >
-              {service}
-            </div>
-          )
-        })}
-      </div>
+<div className="relative w-full max-w-5xl h-56 sm:h-64 md:h-72 lg:h-80 flex items-end justify-center">
+  <Image
+    src="/images/home4.png"  // 👈 replace with your image path
+    alt="service"
+    width={650}   // adjust as needed
+    height={650}
+    className="object-contain"
+  />
+</div>
+  
+
     </section>
   )
 }
