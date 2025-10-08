@@ -15,8 +15,8 @@ export default function Header() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
-    { href: '/work', label: 'Work' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/case-studies', label: 'Case Studies' },
+    { href: '/blogs', label: 'Blogs' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -54,7 +54,7 @@ export default function Header() {
               >
                 {label}
                 {isActive(href) && (
-                  <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-black rounded-full"></span>
+                  <span className="absolute -bottom-3 left-0 right-0 h-0.5 bg-black rounded-full"></span>
                 )}
               </Link>
             ))}

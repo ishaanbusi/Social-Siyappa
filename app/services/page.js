@@ -87,10 +87,7 @@ export default function ServicesPage() {
               {/* Service Card */}
               <div className={`${service.color} rounded-3xl p-8 h-64 flex flex-col justify-between relative overflow-hidden shadow-lg`}>
                 
-                {/* Card Header with Cut Corner */}
-                <div className="relative">
-                  <div className="absolute -top-8 -right-8 w-16 h-16 bg-black transform rotate-45"></div>
-                </div>
+                
 
                 {/* Service Number */}
                 <div className="mb-4">
