@@ -1,10 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function ServicesSection() {
-  const [animatedTags, setAnimatedTags] = useState([])
   const services = [
     'Visual Design & Production',
     'Branding & Marketing',
@@ -18,52 +17,27 @@ export default function ServicesSection() {
     'Content Strategy & Campaign',
   ]
 
+  const [initialized, setInitialized] = useState(false)
+
+  // Tighter horizontal pile spread (20% to 80% - more centered)
+  const pileX = [25, 32, 38, 44, 50, 56, 62, 68, 74, 80]
+  // Reduced vertical spread (-100px to 0px)
+  const pileY = [-15, -35, -65, -25, -45, -100, -30, -55, -80, -5]
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimatedTags(services.map((_, index) => index))
-    }, 300)
-    return () => clearTimeout(timer)
+    setInitialized(true)
   }, [])
 
-  // Responsive positions: tighter cluster on mobile, wider spread on md+
-  const positionsMobile = [
-    { top: '18%', left: '50%', rotation: '-8deg' },
-    { top: '30%', left: '22%', rotation: '6deg' },
-    { top: '28%', left: '78%', rotation: '-5deg' },
-    { top: '45%', left: '15%', rotation: '8deg' },
-    { top: '42%', left: '50%', rotation: '-7deg' },
-    { top: '46%', left: '85%', rotation: '10deg' },
-    { top: '62%', left: '25%', rotation: '-6deg' },
-    { top: '66%', left: '50%', rotation: '7deg' },
-    { top: '70%', left: '80%', rotation: '-4deg' },
-    { top: '84%', left: '50%', rotation: '5deg' },
-  ]
-
-  const positionsDesktop = [
-    { top: '15%', left: '25%', rotation: '-12deg' },
-    { top: '8%', left: '55%', rotation: '8deg' },
-    { top: '20%', left: '75%', rotation: '-5deg' },
-    { top: '35%', left: '15%', rotation: '10deg' },
-    { top: '30%', left: '45%', rotation: '-8deg' },
-    { top: '25%', left: '65%', rotation: '12deg' },
-    { top: '50%', left: '25%', rotation: '-10deg' },
-    { top: '55%', left: '50%', rotation: '8deg' },
-    { top: '60%', left: '75%', rotation: '-6deg' },
-    { top: '75%', left: '40%', rotation: '7deg' },
-  ]
-
-  // Choose positions based on a simple viewport width check
-  const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 768 : true
-  const positions = isDesktop ? positionsDesktop : positionsMobile
+  const generateRandom = (min, max) => Math.random() * (max - min) + min
 
   return (
-    <section className="relative bg-gray-100 h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 py-12 overflow-hidden">
+    <section className="relative bg-gray-100 min-h-[100dvh] flex flex-col items-center justify-between px-4 sm:px-6 py-12 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-6 right-6 sm:top-10 sm:right-10 w-24 sm:w-32 h-24 sm:h-32 bg-gray-200 rounded-full opacity-30"></div>
       <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 w-20 sm:w-24 h-20 sm:h-24 bg-gray-200 rounded-full opacity-20"></div>
 
       {/* Header Section */}
-      <div className="max-w-4xl w-full text-center mb-8">
+      <div className="max-w-4xl w-full text-center pt-8 sm:pt-12 z-20">
         <h2 className="leading-tight font-bold text-gray-900 mb-2 text-2xl md:text-4xl lg:text-5xl">
           You bring the <span className="italic font-light">substance</span>
         </h2>
@@ -73,24 +47,66 @@ export default function ServicesSection() {
         <p className="text-sm md:text-lg text-gray-600 mb-6 md:mb-8">
           with a spoonful of strategy and a lot of sense.
         </p>
-
         <button className="bg-white border-2 border-gray-900 text-gray-900 px-6 md:px-8 py-3 rounded-full font-medium text-base md:text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 shadow">
           Work with Us
         </button>
       </div>
 
-      {/* Floating Service Tags - Responsive stage */}
-<div className="relative w-full max-w-5xl h-56 sm:h-64 md:h-72 lg:h-80 flex items-end justify-center">
-  <Image
-    src="/images/home4.png"  // 👈 replace with your image path
-    alt="service"
-    width={650}   // adjust as needed
-    height={650}
-    className="object-contain"
-  />
-</div>
-  
+      {/* Falling Tags Container - Full Height */}
+      <div className="relative w-full max-w-5xl flex-1 flex items-end justify-center pb-8">
+        {initialized &&
+          services.map((tag, index) => {
+            const randomDelay = generateRandom(0, 1.2)
+            const randomDuration = generateRandom(2.5, 3.5)
+            const startRotation = generateRandom(-40, 40)
+            const settleRotation = generateRandom(-15, 15)
+            const startScale = generateRandom(0.95, 1.1)
+            // Tag starts at a random horizontal position
+            const startX = generateRandom(20, 80)
+            // Tighter horizontal spread with reduced noise
+            const pileSlotX = pileX[index] + generateRandom(-4, 4)
+            // Tighter vertical spread with reduced noise
+            const pileSlotY = pileY[index] + generateRandom(-8, 8)
 
+            return (
+              <motion.div
+                key={index}
+                initial={{
+                  top: 0,
+                  left: startX + '%',
+                  opacity: 0,
+                  rotate: startRotation,
+                  scale: startScale,
+                }}
+                animate={{
+                  top: `calc(100% + ${pileSlotY}px)`,
+                  left: pileSlotX + '%',
+                  opacity: 1,
+                  rotate: settleRotation,
+                  transition: {
+                    duration: randomDuration,
+                    delay: randomDelay,
+                    type: 'spring',
+                    stiffness: 45,
+                    damping: 16,
+                  },
+                }}
+                className="absolute px-5 sm:px-6 py-2 sm:py-3 bg-black text-white rounded-full font-semibold text-xs sm:text-sm md:text-base shadow-lg cursor-default whitespace-nowrap select-none"
+                style={{
+                  userSelect: 'none',
+                  zIndex: 10 + index,
+                }}
+                whileHover={{
+                  scale: 1.12,
+                  rotate: settleRotation + 5,
+                  transition: { duration: 0.3 },
+                }}
+              >
+                {tag}
+              </motion.div>
+            )
+          })}
+      </div>
     </section>
   )
 }
