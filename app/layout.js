@@ -1,11 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
@@ -116,10 +118,7 @@ export default function RootLayout({ children }) {
               ],
               priceRange: "$$",
               openingHours: "Mo-Fr 09:00-19:00",
-              areaServed: {
-                "@type": "Country",
-                name: "India",
-              },
+              areaServed: { "@type": "Country", name: "India" },
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.9",
@@ -138,8 +137,10 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
+
+      {/* ✅ Global Playfair Display applied */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
+        className={`${playfair.variable} ${geistMono.variable} antialiased bg-white text-gray-900 font-sans`}
       >
         <Header />
         {children}

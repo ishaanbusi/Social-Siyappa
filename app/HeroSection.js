@@ -21,12 +21,12 @@ export default function HeroSection() {
       </div>
 
       {/* Top Right Text with Animation */}
-      <div className={`absolute top-6 right-6 sm:top-10 sm:right-12 text-right transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+      {/* <div className={`absolute top-6 right-6 sm:top-10 sm:right-12 text-right transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
         <p className="text-gray-700 font-semibold text-sm sm:text-base lg:text-lg tracking-widest uppercase animate-pulse-slow">
           WE DO BRANDING LIKE<br />
           NO ONE ELSE
         </p>
-      </div>
+      </div> */}
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto text-center py-8">
@@ -64,11 +64,7 @@ export default function HeroSection() {
               onTouchStart={() => setIsImageHovered(true)}
               onTouchEnd={() => setIsImageHovered(false)}
             >
-              {/* Animated Rings Behind Image */}
-              <div className={`absolute inset-0 -z-10 transition-all duration-700 ${isImageHovered ? 'scale-150 opacity-100' : 'scale-100 opacity-0'}`}>
-                <div className="absolute inset-0 rounded-full border-4 border-blue-300 animate-ping-slow"></div>
-                <div className="absolute inset-0 rounded-full border-4 border-purple-300 animate-ping-slow animation-delay-1000"></div>
-              </div>
+              
 
               <Image
                 src="/images/banner.png"

@@ -68,56 +68,58 @@ export default function ChemistrySection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
           {/* Left Text Block */}
           <motion.div
-            variants={itemVariants}
-            className="group bg-gradient-to-br from-[#2a2a2a] to-[#242424] rounded-2xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between min-h-[280px] lg:h-[340px] shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.1)] transition-all duration-500 border border-white/5 hover:border-white/10 overflow-hidden"
-          >
-            <div className="flex-1">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6 sm:mb-7 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
-              >
-                When Chemistry<br />Creates Results
-              </motion.h2>
-              
-              <ul className="space-y-2 sm:space-y-3.5">
-                {[
-                  { label: 'Expert Team', desc: 'Psychology + creativity combined' },
-                  { label: 'Proven Methods', desc: 'Data-driven strategies that work' },
-                  { label: 'Growing Success', desc: 'Happy clients, measurable results' },
-                ].map((item, i) => (
-                  <motion.li
-                    key={i}
-                    custom={i}
-                    variants={listItemVariants}
-                    className="flex items-start gap-2.5 group/item"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 mt-1.5 group-hover/item:scale-150 transition-transform flex-shrink-0"></span>
-                    <div className="flex-1 min-w-0">
-                      <span className="font-bold italic text-white text-sm sm:text-base lg:text-lg block mb-0.5 group-hover/item:text-blue-300 transition-colors">
-                        {item.label}
-                      </span>
-                      <span className="text-gray-400 text-xs sm:text-sm lg:text-base group-hover/item:text-gray-300 transition-colors">
-                        {item.desc}
-                      </span>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="mt-4 flex justify-end">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white text-3xl sm:text-4xl font-bold hover:text-blue-400 transition-all duration-300 cursor-pointer bg-white/5 hover:bg-white/10 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center flex-shrink-0"
-                aria-label="Learn more"
-              >
-                ↗
-              </motion.button>
-            </div>
-          </motion.div>
+  variants={itemVariants}
+  className="group bg-gradient-to-br from-[#2a2a2a] to-[#242424] rounded-2xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between min-h-[280px] lg:h-[340px] shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.1)] transition-all duration-500 border border-white/5 hover:border-white/10 overflow-hidden"
+>
+  <div className="flex-1">
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: 0.3, duration: 0.6 }}
+      className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6 sm:mb-7 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+    >
+      When Chemistry<br />Turns Ideas Into Impact
+    </motion.h2>
+    
+    <ul className="space-y-2 sm:space-y-3.5">
+      {[
+        { label: 'Brains With Imagination' },
+        { label: 'Methods That Work' },
+        { label: 'Success You Can See' },
+      ].map((item, i) => (
+        <motion.li
+          key={i}
+          custom={i}
+          variants={listItemVariants}
+          className="flex items-start gap-2.5 group/item"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 mt-1.5 group-hover/item:scale-150 transition-transform flex-shrink-0"></span>
+          <div className="flex-1 min-w-0">
+            <span className="font-bold italic text-white text-sm sm:text-base lg:text-lg block mb-0.5 group-hover/item:text-blue-300 transition-colors">
+              {item.label}
+            </span>
+          </div>
+        </motion.li>
+      ))}
+    </ul>
+  </div>
+  
+  <p className="mt-6 text-gray-400 text-xs sm:text-sm lg:text-base leading-relaxed group-hover:text-gray-300 transition-colors">
+    From first glance to final sale, we help your brand grow with precision and purpose.
+  </p>
+
+  <div className="mt-4 flex justify-end">
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="text-white text-3xl sm:text-4xl font-bold hover:text-blue-400 transition-all duration-300 cursor-pointer bg-white/5 hover:bg-white/10 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center flex-shrink-0"
+      aria-label="Learn more"
+    >
+      ↗
+    </motion.button>
+  </div>
+</motion.div>
+
 
           {/* Right Large Image */}
           <motion.div
@@ -179,21 +181,22 @@ export default function ChemistrySection() {
             className="bg-gradient-to-br from-[#2a2a2a] to-[#1f1f1f] rounded-2xl p-6 sm:p-7 flex flex-col justify-center items-center border-2 border-white/10 text-white text-center min-h-[180px] lg:h-[240px] hover:border-white/20 transition-all duration-500 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.1)] group"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              <h3 className="uppercase font-bold tracking-widest mb-3 text-xs sm:text-sm lg:text-base text-gray-400 group-hover:text-white transition-colors">
-                LOREM IPSUM
-              </h3>
-              <div className="w-10 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-3"></div>
-              <p className="font-light text-xs sm:text-sm lg:text-base leading-relaxed text-gray-400 max-w-xs group-hover:text-gray-300 transition-colors">
-                Lorem Ipsum Lorem Ipsum<br />
-                Ipsum Lorem Ipsum Lorem<br />
-                Ipsum Lorem Ipsum Lorem<br />
-                Ipsum Lorem Ipsum
-              </p>
-            </motion.div>
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+  transition={{ delay: 0.8, duration: 0.5 }}
+>
+  <h3 className="uppercase font-bold tracking-widest mb-3 text-xs sm:text-sm lg:text-base text-gray-400 group-hover:text-white transition-colors">
+    WE START WITH PEOPLE
+  </h3>
+  <div className="w-10 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-3"></div>
+  <p className="font-light text-xs sm:text-sm lg:text-base leading-relaxed text-gray-400 max-w-xs group-hover:text-gray-300 transition-colors">
+    What drives them, what delights them, and what makes them choose.<br />
+    Then we craft stories that stop the scroll and stay in the mind.<br />
+    The result is simple: brands that feel alive,<br />
+    campaigns that convert, and audiences that return.
+  </p>
+</motion.div>
+
           </motion.div>
 
           {/* Right Medium Image */}
