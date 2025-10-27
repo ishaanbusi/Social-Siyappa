@@ -6,9 +6,19 @@ import Image from 'next/image'
 export default function HeroSection() {
   const [isImageHovered, setIsImageHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [count, setCount] = useState(1)
 
+  // Animate text in on load
   useEffect(() => {
     setIsLoaded(true)
+  }, [])
+
+  // Loop counter 1 → 2 → 3
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => (prev === 3 ? 1 : prev + 1))
+    }, 1000)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -20,20 +30,14 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Top Right Text with Animation */}
-      {/* <div className={`absolute top-6 right-6 sm:top-10 sm:right-12 text-right transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-        <p className="text-gray-700 font-semibold text-sm sm:text-base lg:text-lg tracking-widest uppercase animate-pulse-slow">
-          WE DO BRANDING LIKE<br />
-          NO ONE ELSE
-        </p>
-      </div> */}
-
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto text-center py-8">
         <div className="space-y-4 sm:space-y-6 lg:space-y-8">
-          {/* First Line with Stagger Animation */}
+          {/* First Line */}
           <div
-            className={`leading-tight transition-all duration-1000 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            className={`leading-tight transition-all duration-1000 delay-100 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
             style={{
               fontSize: 'clamp(2rem, 5.5vw, 5rem)',
             }}
@@ -43,18 +47,21 @@ export default function HeroSection() {
             <span className="font-bold text-gray-900 animate-scale-in animation-delay-400">decides</span>
           </div>
 
-          {/* Second Line with Image */}
+          {/* Second Line with Counter */}
           <div
-            className={`flex justify-center items-center gap-4 sm:gap-6 lg:gap-8 flex-wrap sm:flex-nowrap leading-tight transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            className={`flex justify-center items-center gap-4 sm:gap-6 lg:gap-8 flex-wrap sm:flex-nowrap leading-tight transition-all duration-1000 delay-300 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
           >
             <span
-              className="font-bold text-gray-900 animate-scale-in animation-delay-600"
+              key={count} // helps retrigger fade animation
+              className="font-bold text-gray-900 transition-all duration-600"
               style={{ fontSize: 'clamp(2rem, 5.5vw, 5rem)' }}
             >
-              in 3 seconds.
+              in {count} seconds.
             </span>
 
-            {/* Enhanced Image with Hover/Touch Effects */}
+            {/* Hover Image */}
             <div
               className={`relative transition-all duration-700 ease-out cursor-pointer animate-float
                           ${isImageHovered ? 'scale-125 rotate-12' : 'scale-100'} 
@@ -64,8 +71,6 @@ export default function HeroSection() {
               onTouchStart={() => setIsImageHovered(true)}
               onTouchEnd={() => setIsImageHovered(false)}
             >
-              
-
               <Image
                 src="/images/banner.png"
                 alt="Brain Icon"
@@ -74,17 +79,19 @@ export default function HeroSection() {
                 priority
                 sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
                 className={`transition-all duration-700 object-contain
-                            ${isImageHovered
-                              ? 'drop-shadow-[0_0_40px_rgba(59,130,246,0.9)] brightness-110'
-                              : 'drop-shadow-2xl'}`}
+                            ${
+                              isImageHovered
+                                ? 'drop-shadow-[0_0_40px_rgba(59,130,246,0.9)] brightness-110'
+                                : 'drop-shadow-2xl'
+                            }`}
                 style={{
                   width: 'auto',
                   height: 'auto',
                   maxWidth: '200px',
                 }}
               />
-              
-              {/* Enhanced Glow Effect */}
+
+              {/* Glow Effects */}
               {isImageHovered && (
                 <>
                   <div className="pointer-events-none absolute inset-0 rounded-full blur-3xl opacity-60 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
@@ -101,9 +108,11 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* Third Line with Final Animation */}
+          {/* Third Line */}
           <div
-            className={`leading-tight transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            className={`leading-tight transition-all duration-1000 delay-500 ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
             style={{ fontSize: 'clamp(2rem, 5.5vw, 5rem)' }}
           >
             <span className="font-bold text-gray-900 animate-scale-in animation-delay-1000 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
@@ -113,22 +122,26 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
-      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 sm:bottom-12 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+      {/* Scroll Indicator */}
+      <div
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 sm:bottom-12 transition-all duration-1000 delay-700 ${
+          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        }`}
+      >
         <div className="w-7 h-12 border-2 border-gray-400 rounded-full flex justify-center hover:border-gray-600 transition-colors cursor-pointer">
           <div className="w-1.5 h-3 bg-gray-600 rounded-full mt-2 animate-bounce"></div>
         </div>
         <p className="text-xs text-gray-500 mt-2 animate-pulse">Scroll</p>
       </div>
 
-      {/* Add custom animations to your globals.css or tailwind.config.js */}
+      {/* Animations */}
       <style jsx>{`
         @keyframes blob {
           0%, 100% { transform: translate(0, 0) scale(1); }
           33% { transform: translate(30px, -50px) scale(1.1); }
           66% { transform: translate(-20px, 20px) scale(0.9); }
         }
-        
+
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
@@ -187,33 +200,13 @@ export default function HeroSection() {
           animation: spin-slow 3s linear infinite;
         }
 
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-        }
-
-        .animation-delay-800 {
-          animation-delay: 0.8s;
-        }
-
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+        .animation-delay-800 { animation-delay: 0.8s; }
+        .animation-delay-1000 { animation-delay: 1s; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
       `}</style>
     </section>
   )
