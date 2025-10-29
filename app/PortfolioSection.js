@@ -13,7 +13,7 @@ import 'swiper/css/effect-coverflow'
 
 export default function PortfolioSection() {
   const portfolioImages = [
-    { src: '/images/home1.png', alt: 'Project 1' },
+    { src: '/images/frame-1.png', alt: 'Project 1' },
     { src: '/images/home2.png', alt: 'Project 2' },
     { src: '/images/brain.png', alt: 'Project 3' },
     { src: '/images/about.png', alt: 'Project 4' },

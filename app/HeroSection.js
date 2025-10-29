@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function HeroSection() {
   const [isImageHovered, setIsImageHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(0)
 
   // Animate text in on load
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function HeroSection() {
   // Loop counter 1 → 2 → 3
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount((prev) => (prev === 3 ? 1 : prev + 1))
+      setCount((prev) => (prev === 3 ? 0 : prev + 1))
     }, 1000)
     return () => clearInterval(interval)
   }, [])

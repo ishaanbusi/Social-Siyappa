@@ -16,7 +16,7 @@ export default function AboutUsSection() {
           <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed max-w-xl">
             <p>
               We&apos;re a strategy-first studio that believes branding 
-              should feel like a conversation — not a pitch.
+              should feel like a conversation not a pitch.
             </p>
             
             <p>

@@ -40,7 +40,7 @@ export default function OurWhySection() {
           <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
             Because people don&apos;t connect with content <br />
             <span className="italic text-blue-300">
-              — They connect with emotion.
+              They connect with emotion.
             </span>
           </p>
 
