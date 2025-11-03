@@ -16,7 +16,7 @@ export default function Header() {
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     { href: '/case-studies', label: 'Case Studies' },
-    { href: '/blogs', label: 'Blogs' },
+    // { href: '/blogs', label: 'Blogs' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -27,12 +27,12 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="w-14 h-14 rounded-lg overflow-hidden flex items-center justify-center">
+              <div className="w-24 h-24 rounded-lg overflow-hidden flex items-center justify-center">
                 <Image
                   src="/images/logo.png"
                   alt="Social Siyappa Logo"
-                  width={56}
-                  height={56}
+                  width={76}
+                  height={76}
                   className="object-contain"
                   priority
                 />
@@ -46,7 +46,7 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`relative font-medium transition-colors duration-200 ${
+                className={`relative font-large transition-colors duration-200 ${
                   isActive(href)
                     ? 'text-gray-900 text-base'
                     : 'text-gray-600 text-sm hover:text-gray-900'
@@ -102,7 +102,7 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`block font-medium transition-colors duration-200 ${
+                className={`block font-large transition-colors duration-200 ${
                   isActive(href)
                     ? 'text-gray-900 text-lg'
                     : 'text-gray-600 text-base hover:text-gray-900'

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function ServicesPage() {
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -10,37 +11,49 @@ export default function ServicesPage() {
       id: '01',
       title: 'Branding Strategy & Voice',
       color: 'bg-gray-200',
-      textColor: 'text-black'
+      textColor: 'text-black',
+      image: '/images/section-home/1.png',
+      imageAlt: 'Branding strategy background'
     },
     {
       id: '02',
       title: 'Content Strategy & Campaign',
       color: 'bg-purple-600',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      image: '/images/section-home/2.png',
+      imageAlt: 'Content strategy background'
     },
     {
       id: '03',
       title: 'Website Design & Development',
       color: 'bg-gray-200',
-      textColor: 'text-black'
+      textColor: 'text-black',
+      image: '/images/section-home/3.png',
+      imageAlt: 'Website development background'
     },
     {
       id: '04',
       title: 'Visual Design & Production',
       color: 'bg-gray-200',
-      textColor: 'text-black'
+      textColor: 'text-black',
+      image: '/images/section-home/4.png',
+      imageAlt: 'Visual design background'
     },
     {
       id: '05',
       title: 'Ad & Analytics',
       color: 'bg-gray-200',
-      textColor: 'text-black'
+      textColor: 'text-black',
+      image: '/images/brain.png',
+      imageAlt: 'Analytics background'
     },
     {
       id: '06',
       title: 'Performance Marketing',
       color: 'bg-purple-600',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      image: '/images/about.png',
+      imageAlt: 'Performance marketing background'
     }
   ]
 
@@ -85,26 +98,40 @@ export default function ServicesPage() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Service Card */}
-              <div className={`${service.color} rounded-3xl p-8 h-64 flex flex-col justify-between relative overflow-hidden shadow-lg`}>
+              <div className="relative rounded-3xl h-64 overflow-hidden shadow-lg">
                 
-                
+                {/* Full Cover Background Image */}
+                <Image
+                  src={service.image}
+                  alt={service.imageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
 
-                {/* Service Number */}
-                <div className="mb-4">
-                  <span className={`text-sm font-medium ${service.textColor} opacity-70`}>
-                    {service.id}
-                  </span>
-                </div>
+                {/* Dark Overlay for Better Text Readability */}
+                <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
 
-                {/* Service Title */}
-                <div className="flex-1 flex items-end">
-                  <h3 className={`text-xl md:text-2xl font-semibold leading-tight ${service.textColor}`}>
-                    {service.title}
-                  </h3>
+                {/* Card Content */}
+                <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+                  
+                  {/* Service Number */}
+                  <div className="mb-4">
+                    <span className="text-sm font-medium text-white opacity-70">
+                      {service.id}
+                    </span>
+                  </div>
+
+                  {/* Service Title */}
+                  <div className="flex-1 flex items-end">
+                    <h3 className="text-xl md:text-2xl font-semibold leading-tight text-white">
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
 
                 {/* Hover Effect Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-800 rounded-3xl opacity-0 transition-opacity duration-300 flex items-center justify-center ${
+                <div className={`absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-800 rounded-3xl opacity-0 transition-opacity duration-300 flex items-center justify-center z-20 ${
                   hoveredCard === service.id ? 'opacity-95' : ''
                 }`}>
                   <div className="text-center text-white p-6">

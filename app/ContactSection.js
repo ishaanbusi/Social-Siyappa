@@ -61,7 +61,6 @@ export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form submitted:', formData)
-    // Add your form submission logic here
     setIsPopupOpen(false)
     setFormData({ name: '', email: '', mobile: '', city: '', service: '' })
   }
@@ -131,48 +130,82 @@ export default function ContactSection() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
 
-          <div className="relative z-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-white text-4xl sm:text-5xl lg:text-6xl font-light mb-3 leading-tight"
-            >
-              Let&apos;s get<br />
-              <span className="italic font-normal bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                in touch
-              </span>
-            </motion.h2>
+          <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
+            {/* Left Content */}
+            <div className="flex-1">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-white text-4xl sm:text-5xl lg:text-6xl font-light mb-3 leading-tight"
+              >
+                Let&apos;s get<br />
+                <span className="italic font-normal bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                  in touch
+                </span>
+              </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-gray-400 text-base sm:text-lg mb-8 sm:mb-10 max-w-md"
-            >
-              Ready to transform your brand? Schedule a call and let&apos;s create something amazing together.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="text-gray-400 text-base sm:text-lg mb-8 sm:mb-10 max-w-md"
+              >
+                Ready to transform your brand? Schedule a call and let&apos;s create something amazing together.
+              </motion.p>
 
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsPopupOpen(true)}
-              className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-white/80 text-white rounded-full text-base sm:text-lg font-medium transition-all hover:bg-white hover:text-black overflow-hidden"
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsPopupOpen(true)}
+                className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-white/80 text-white rounded-full text-base sm:text-lg font-medium transition-all hover:bg-white hover:text-black overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Book a Call
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+              </motion.button>
+            </div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="hidden lg:block relative"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Book a Call
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-            </motion.button>
+              <div className="relative w-64 h-80 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/1.png"
+                  alt="Get in touch"
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                
+                {/* Decorative border glow */}
+                <div className="absolute inset-0 border-2 border-white/20 rounded-2xl" />
+              </div>
+              
+              {/* Floating decorative element */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full blur-xl"
+              />
+            </motion.div>
           </div>
         </motion.div>
 
@@ -190,128 +223,153 @@ export default function ContactSection() {
       </div>
 
       {/* Popup Form */}
-<AnimatePresence>
-  {isPopupOpen && (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setIsPopupOpen(false)}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-      />
-
-      {/* Popup */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl z-50 p-8 border border-white/10"
-      >
-        {/* Close button */}
-        <button
-          onClick={() => setIsPopupOpen(false)}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        {/* Form Header */}
-        <h3 className="text-2xl font-semibold text-white mb-2">We&apos;d love to hear from you!</h3>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">
-              Name <span className="text-red-400">*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
-              placeholder="Your name"
+      <AnimatePresence>
+        {isPopupOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsPopupOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
             />
-          </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">
-              Email <span className="text-red-400">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
-              placeholder="your.email@example.com"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">Mobile</label>
-            <input
-              type="tel"
-              name="mobile"
-              value={formData.mobile}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
-              placeholder="Your phone number"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">City</label>
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
-              placeholder="Your city"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">
-              Services Required <span className="text-red-400">*</span>
-            </label>
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
+            {/* Popup */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-4xl bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl z-50 border border-white/10 overflow-hidden"
             >
-              <option value="">Select here</option>
-              <option value="branding">Branding</option>
-              <option value="web-design">Web Design</option>
-              <option value="marketing">Marketing</option>
-              <option value="consulting">Consulting</option>
-            </select>
-          </div>
+              {/* Close button */}
+              <button
+                onClick={() => setIsPopupOpen(false)}
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white z-10"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl mt-6"
-          >
-            Submit
-          </motion.button>
-        </form>
-      </motion.div>
-    </>
-  )}
-</AnimatePresence>
+              <div className="flex flex-col md:flex-row">
+                {/* Form Section - Left */}
+                <div className="w-full md:w-1/2 p-8">
+                  {/* Form Header */}
+                  <h3 className="text-2xl font-semibold text-white mb-2">We&apos;d love to hear from you!</h3>
 
+                  {/* Form */}
+                  <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
+                        Name <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
+                        Email <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-1">Mobile</label>
+                      <input
+                        type="tel"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                        placeholder="Your phone number"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-1">City</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                        placeholder="Your city"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-1">
+                        Services Required <span className="text-red-400">*</span>
+                      </label>
+                      <select
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
+                      >
+                        <option value="">Select here</option>
+                        <option value="branding">Branding</option>
+                        <option value="web-design">Web Design</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="consulting">Consulting</option>
+                      </select>
+                    </div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl mt-6"
+                    >
+                      Submit
+                    </motion.button>
+                  </form>
+                </div>
+
+                {/* Image Section - Right */}
+                <div className="hidden md:block w-1/2 relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+                  <Image
+                    src="/images/about-2.png"
+                    alt="Contact us"
+                    width={500}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/40" />
+                  
+                  {/* Optional decorative content on image */}
+                  <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <h4 className="text-2xl font-bold mb-2">Let&apos;s Create Together</h4>
+                    <p className="text-gray-200">Transform your vision into reality</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
