@@ -2,12 +2,20 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 export default function ContactSection() {
   const [hoveredImage, setHoveredImage] = useState(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    city: '',
+    service: ''
+  })
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 }) // only first visit
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const images = [
     { src: '/images/1.png', alt: 'Contact Card 1', rotation: -12, translateY: 4 },
@@ -26,7 +34,6 @@ export default function ContactSection() {
     }
   }
 
-  // 🔁 Keyframed entrance that loops 10 times
   const imageVariants = {
     hidden: { opacity: 0, y: 100, rotate: 0 },
     visible: (i) => ({
@@ -37,11 +44,26 @@ export default function ContactSection() {
         delay: 0.4 + i * 0.12,
         duration: 0.9,
         ease: [0.22, 1, 0.36, 1],
-        repeat: 10,         // 🔁 repeat 10 times
+        repeat: 10,
         repeatType: 'mirror',
         repeatDelay: 0.35
       }
     })
+  }
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('Form submitted:', formData)
+    // Add your form submission logic here
+    setIsPopupOpen(false)
+    setFormData({ name: '', email: '', mobile: '', city: '', service: '' })
   }
 
   return (
@@ -137,6 +159,7 @@ export default function ContactSection() {
               transition={{ delay: 0.7, duration: 0.6 }}
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => setIsPopupOpen(true)}
               className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-white/80 text-white rounded-full text-base sm:text-lg font-medium transition-all hover:bg-white hover:text-black overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -165,6 +188,130 @@ export default function ContactSection() {
           className="absolute -left-10 bottom-32 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl"
         />
       </div>
+
+      {/* Popup Form */}
+<AnimatePresence>
+  {isPopupOpen && (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setIsPopupOpen(false)}
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+      />
+
+      {/* Popup */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl z-50 p-8 border border-white/10"
+      >
+        {/* Close button */}
+        <button
+          onClick={() => setIsPopupOpen(false)}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Form Header */}
+        <h3 className="text-2xl font-semibold text-white mb-2">We&apos;d love to hear from you!</h3>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">
+              Name <span className="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">
+              Email <span className="text-red-400">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">Mobile</label>
+            <input
+              type="tel"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+              placeholder="Your phone number"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">City</label>
+            <input
+              type="text"
+              name="city"
+              value={formData.city}
+              onChange={handleInputChange}
+              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+              placeholder="Your city"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">
+              Services Required <span className="text-red-400">*</span>
+            </label>
+            <select
+              name="service"
+              value={formData.service}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
+            >
+              <option value="">Select here</option>
+              <option value="branding">Branding</option>
+              <option value="web-design">Web Design</option>
+              <option value="marketing">Marketing</option>
+              <option value="consulting">Consulting</option>
+            </select>
+          </div>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl mt-6"
+          >
+            Submit
+          </motion.button>
+        </form>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
+
     </section>
   )
 }

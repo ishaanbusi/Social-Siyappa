@@ -34,7 +34,7 @@ export default function NeuromarketingSection() {
         <div className="flex flex-col justify-between h-full py-12 md:hidden">
           {/* Top: Heading */}
           <div className="flex items-start justify-center pt-4">
-            <h1 className="text-3xl sm:text-4xl font-bold text-white leading-snug text-center px-4 drop-shadow-lg">
+            <h1 className="text-2xl font-bold text-white leading-snug text-center px-4 drop-shadow-lg">
               Your brand sparks curiosity, then <span className="italic font-light">fades away.</span>
             </h1>
           </div>
@@ -57,7 +57,7 @@ export default function NeuromarketingSection() {
         <div className="hidden md:block relative w-full h-full">
           {/* Main Headline */}
           <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center px-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-2xl">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
               Your brand sparks curiosity, then <span className="italic font-light">fades away.</span>
             </h1>
           </div>
