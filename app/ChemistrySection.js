@@ -134,7 +134,7 @@ export default function ChemistrySection() {
               className="relative w-full h-full"
             >
               <Image
-                src="/images/brain.png"
+                src="/images/home-bg.jpg"
                 alt="Chemistry visual"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
