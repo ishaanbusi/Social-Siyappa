@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linkedin, Facebook, Mail, Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -68,22 +69,25 @@ export default function Footer() {
           </div>
 
           {/* Right Column - Logo and Copyright */}
-          <div className="flex flex-col items-start md:items-end">
-            <div className="flex items-center gap-3 mb-8">
-              {/* Colorful puzzle logo */}
-              <div className="flex flex-wrap w-12 h-12">
-                <div className="w-6 h-6 bg-yellow-400 rounded-tl-lg"></div>
-                <div className="w-6 h-6 bg-green-400 rounded-tr-lg"></div>
-                <div className="w-6 h-6 bg-blue-400 rounded-bl-lg"></div>
-                <div className="w-6 h-6 bg-pink-500 rounded-br-lg"></div>
-              </div>
-              <div className="text-left">
-                <div className="text-2xl font-bold leading-tight">Social</div>
-                <div className="text-2xl font-bold leading-tight">Siyappa</div>
-              </div>
-            </div>
-            <p className="text-sm tracking-wider">copyright @2024</p>
-          </div>
+<div className="flex flex-col items-start md:items-end">
+  <div className="flex items-center gap-3 mb-8">
+    {/* Replaced with logo image */}
+    <div className="w-74 h-74 relative">
+      <Image
+        src="/images/footer-logo.png" // <-- replace this path with your actual logo path
+        alt="Social Siyappa Logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
+
+    
+  </div>
+
+  <p className="text-sm tracking-wider">© 2024 Social Siyappa. All rights reserved.</p>
+</div>
+
         </div>
       </div>
     </footer>

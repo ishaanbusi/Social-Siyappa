@@ -4,13 +4,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+
 const BrandingSection = () => {
   return (
     <div className="bg-black min-h-screen flex items-center justify-center p-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
         
         {/* First Card - Image */}
-        <Link href="/page-1" className="group">
+        <Link href="/case-studies/ak-atelier" className="group">
           <div className="relative rounded-3xl overflow-hidden shadow-xl h-96 lg:h-[500px] bg-gray-900 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
             <Image
               src="/images/frame-1.png"
@@ -23,7 +24,7 @@ const BrandingSection = () => {
         </Link>
 
         {/* Second Card - Image */}
-        <Link href="/page-2" className="group">
+        <Link href="/case-studies/riddhi-benani" className="group">
           <div className="relative rounded-3xl overflow-hidden shadow-xl h-96 lg:h-[500px] bg-gray-900 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
             <Image
               src="/images/frame-2.png"
