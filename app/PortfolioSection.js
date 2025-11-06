@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 
@@ -13,10 +14,10 @@ import 'swiper/css/effect-coverflow'
 
 export default function PortfolioSection() {
   const portfolioImages = [
-    { src: '/images/section-home/1.png', alt: 'Project 1' },
-    { src: '/images/section-home/2.png', alt: 'Project 2' },
-    { src: '/images/section-home/3.png', alt: 'Project 3' },
-    { src: '/images/section-home/4.png', alt: 'Project 4' },
+    { src: '/images/section-home/1.png', alt: 'Project 1', slug: 'ak-atelier' },
+    { src: '/images/section-home/2.png', alt: 'Project 2', slug: 'riddhi-benani' },
+    { src: '/images/section-home/3.png', alt: 'Project 3', slug: 'project-3' },
+    { src: '/images/section-home/4.png', alt: 'Project 4', slug: 'project-4' },
   ]
 
   return (
@@ -66,7 +67,7 @@ export default function PortfolioSection() {
           >
             {portfolioImages.map((image, index) => (
               <SwiperSlide key={index}>
-                <div className="slide-content group">
+                <Link href={`/case-studies/${image.slug}`} className="slide-content group block">
                   <Image
                     src={image.src}
                     alt={image.alt}
@@ -76,7 +77,14 @@ export default function PortfolioSection() {
                     priority={index === 0}
                   />
                   <div className="absolute inset-0 transition-all duration-500 opacity-0 group-hover:opacity-30 bg-gradient-to-t from-black via-gray-700 to-transparent"></div>
-                </div>
+                  
+                  {/* Hover overlay with "View Project" text */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <span className="bg-white text-black px-6 py-3 rounded-full font-semibold text-sm sm:text-base transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      View Project
+                    </span>
+                  </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -113,6 +121,7 @@ export default function PortfolioSection() {
           border-radius: 1rem;
           overflow: hidden;
           transition: all 0.5s ease-in-out;
+          cursor: pointer;
         }
 
         .portfolio-swiper-centered .slide-content:hover {

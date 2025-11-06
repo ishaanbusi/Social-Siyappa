@@ -20,7 +20,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/section-home/1.png',
-      imageAlt: 'Branding strategy background'
+      imageAlt: 'Branding strategy background',
+      description: 'Build a distinctive brand identity that resonates with your target audience and stands out in the market.'
     },
     {
       id: '02',
@@ -28,7 +29,8 @@ export default function ServicesPage() {
       color: 'bg-purple-600',
       textColor: 'text-white',
       image: '/images/section-home/2.png',
-      imageAlt: 'Content strategy background'
+      imageAlt: 'Content strategy background',
+      description: 'Create compelling content strategies that drive engagement and deliver measurable results.'
     },
     {
       id: '03',
@@ -36,7 +38,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/section-home/3.png',
-      imageAlt: 'Website development background'
+      imageAlt: 'Website development background',
+      description: 'Develop stunning, high-performance websites that convert visitors into customers.'
     },
     {
       id: '04',
@@ -44,7 +47,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/section-home/4.png',
-      imageAlt: 'Visual design background'
+      imageAlt: 'Visual design background',
+      description: 'Craft visually stunning designs that capture attention and communicate your brand message.'
     },
     {
       id: '05',
@@ -52,7 +56,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/brain.png',
-      imageAlt: 'Analytics background'
+      imageAlt: 'Analytics background',
+      description: 'Leverage data-driven insights to optimize your advertising campaigns and maximize ROI.'
     },
     {
       id: '06',
@@ -60,7 +65,8 @@ export default function ServicesPage() {
       color: 'bg-purple-600',
       textColor: 'text-white',
       image: '/images/about.png',
-      imageAlt: 'Performance marketing background'
+      imageAlt: 'Performance marketing background',
+      description: 'Drive measurable growth through strategic performance marketing campaigns.'
     },
     {
       id: '07',
@@ -68,7 +74,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/section-home/4.png',
-      imageAlt: 'Visual design background'
+      imageAlt: 'Visual design background',
+      description: 'Harness the power of AI to automate and optimize your marketing efforts.'
     },
     {
       id: '08',
@@ -76,7 +83,8 @@ export default function ServicesPage() {
       color: 'bg-gray-200',
       textColor: 'text-black',
       image: '/images/brain.png',
-      imageAlt: 'Analytics background'
+      imageAlt: 'Analytics background',
+      description: 'Craft compelling brand narratives that connect emotionally with your audience.'
     },
     {
       id: '09',
@@ -84,7 +92,8 @@ export default function ServicesPage() {
       color: 'bg-purple-600',
       textColor: 'text-white',
       image: '/images/about.png',
-      imageAlt: 'Performance marketing background'
+      imageAlt: 'Performance marketing background',
+      description: 'Transform your brand with intelligent, AI-driven branding solutions.'
     }
   ]
 
@@ -144,57 +153,53 @@ export default function ServicesPage() {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`relative group cursor-pointer transition-all duration-300 ${
-                hoveredCard === service.id ? 'transform scale-105' : ''
-              }`}
+              className="flip-card-container h-64"
               onMouseEnter={() => setHoveredCard(service.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Service Card */}
-              <div className="relative rounded-3xl h-64 overflow-hidden shadow-lg">
+              {/* Flip Card Inner */}
+              <div className={`flip-card ${hoveredCard === service.id ? 'flipped' : ''}`}>
                 
-                {/* Full Cover Background Image */}
-                <img
-                  src={service.image}
-                  alt={service.imageAlt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                {/* Front Face */}
+                <div className="flip-card-face flip-card-front rounded-3xl overflow-hidden shadow-lg">
+                  {/* Full Cover Background Image */}
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
 
-                {/* Dark Overlay for Better Text Readability */}
-                <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
 
-                {/* Card Content */}
-                <div className="relative z-10 p-8 h-full flex flex-col justify-between">
-                  
-                  {/* Service Number */}
-                  <div className="mb-4">
-                    <span className="text-sm font-medium text-white opacity-70">
-                      {service.id}
-                    </span>
-                  </div>
+                  {/* Card Content */}
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+                    {/* Service Number */}
+                    <div className="mb-4">
+                      <span className="text-sm font-medium text-white opacity-70">
+                        {service.id}
+                      </span>
+                    </div>
 
-                  {/* Service Title */}
-                  <div className="flex-1 flex items-end">
-                    <h3 className="text-xl md:text-2xl font-semibold leading-tight text-white">
-                      {service.title}
-                    </h3>
+                    {/* Service Title */}
+                    <div className="flex-1 flex items-end">
+                      <h3 className="text-xl md:text-2xl font-semibold leading-tight text-white">
+                        {service.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
 
-                {/* Hover Effect Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-800 rounded-3xl opacity-0 transition-opacity duration-300 flex items-center justify-center z-20 ${
-                  hoveredCard === service.id ? 'opacity-95' : ''
-                }`}>
-                  <div className="text-center text-white p-6">
-                    <h4 className="text-xl font-semibold mb-3">{service.title}</h4>
+                {/* Back Face */}
+                <div className="flip-card-face flip-card-back rounded-3xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-600 to-purple-800">
+                  <div className="relative z-10 p-8 h-full flex flex-col justify-center items-center text-center text-white">
+                    <h4 className="text-xl font-semibold mb-4">{service.title}</h4>
                     <p className="text-sm opacity-90 leading-relaxed">
-                      Comprehensive solutions tailored to your brand&apos;s unique needs and goals.
+                      {service.description}
                     </p>
-                    <button className="mt-4 bg-white text-purple-600 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
-                      Learn More
-                    </button>
                   </div>
                 </div>
+
               </div>
             </div>
           ))}
@@ -369,6 +374,39 @@ export default function ServicesPage() {
         }
         .animate-scaleIn {
           animation: scaleIn 0.3s ease-out;
+        }
+
+        /* Flip Card Styles */
+        .flip-card-container {
+          perspective: 1000px;
+        }
+
+        .flip-card {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped {
+          transform: rotateY(180deg);
+        }
+
+        .flip-card-face {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+          z-index: 2;
+        }
+
+        .flip-card-back {
+          transform: rotateY(180deg);
         }
       `}</style>
     </main>
