@@ -22,7 +22,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 h-[100dvh] flex items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 h-[100dvh] flex items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden border-4 border-purple-500 animate-pulse-border-inset">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -172,6 +172,21 @@ export default function HeroSection() {
           to { transform: rotate(360deg); }
         }
 
+        @keyframes pulse-border-inset {
+          0%, 100% { 
+            border-color: rgba(168, 85, 247, 1);
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.8), 
+                        inset 0 0 40px rgba(168, 85, 247, 0.6),
+                        inset 0 0 60px rgba(168, 85, 247, 0.4);
+          }
+          50% { 
+            border-color: rgba(168, 85, 247, 0.5);
+            box-shadow: inset 0 0 30px rgba(168, 85, 247, 1), 
+                        inset 0 0 60px rgba(168, 85, 247, 0.8),
+                        inset 0 0 90px rgba(168, 85, 247, 0.6);
+          }
+        }
+
         .animate-blob {
           animation: blob 7s infinite;
         }
@@ -198,6 +213,10 @@ export default function HeroSection() {
 
         .animate-spin-slow {
           animation: spin-slow 3s linear infinite;
+        }
+
+        .animate-pulse-border-inset {
+          animation: pulse-border-inset 2s ease-in-out infinite;
         }
 
         .animation-delay-200 { animation-delay: 0.2s; }
