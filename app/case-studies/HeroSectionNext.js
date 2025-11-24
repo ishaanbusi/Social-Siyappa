@@ -10,7 +10,7 @@ const BrandingSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
         
         {/* First Card - Image */}
-        <Link href="/page-3" className="group">
+        <Link href="/case-studies/alinah" className="group">
           <div className="relative rounded-3xl overflow-hidden shadow-xl h-96 lg:h-[500px] transition-transform duration-300 group-hover:scale-105 cursor-pointer">
             <Image
               src="/images/frame-3.png"
@@ -23,7 +23,7 @@ const BrandingSection = () => {
         </Link>
 
         {/* Second Card - Image */}
-        <Link href="/page-4" className="group">
+        <Link href="/case-studies/ame" className="group">
           <div className="relative rounded-3xl overflow-hidden shadow-xl h-96 lg:h-[500px] transition-transform duration-300 group-hover:scale-105 cursor-pointer">
             <Image
               src="/images/frame-4.png"
