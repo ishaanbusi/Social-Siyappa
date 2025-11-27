@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 export default function ServicesPage() {
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -13,13 +14,16 @@ export default function ServicesPage() {
     service: ''
   })
 
+  const headerRef = useRef(null)
+  const isInView = useInView(headerRef, { once: true, margin: "-100px" })
+
   const services = [
     {
       id: '01',
       title: 'Branding Strategy & Voice',
       color: 'bg-gray-200',
       textColor: 'text-black',
-      image: '/images/section-home/1.png',
+      image: '/images/services/branding.png',
       imageAlt: 'Branding strategy background',
       description: 'Build a distinctive brand identity that resonates with your target audience and stands out in the market.'
     },
@@ -28,7 +32,7 @@ export default function ServicesPage() {
       title: 'Content Strategy & Campaign',
       color: 'bg-purple-600',
       textColor: 'text-white',
-      image: '/images/section-home/2.png',
+      image: '/images/services/content.png',
       imageAlt: 'Content strategy background',
       description: 'Create compelling content strategies that drive engagement and deliver measurable results.'
     },
@@ -46,7 +50,7 @@ export default function ServicesPage() {
       title: 'Visual Design & Production',
       color: 'bg-gray-200',
       textColor: 'text-black',
-      image: '/images/section-home/4.png',
+      image: '/images/services/visual-design.png',
       imageAlt: 'Visual design background',
       description: 'Craft visually stunning designs that capture attention and communicate your brand message.'
     },
@@ -55,7 +59,7 @@ export default function ServicesPage() {
       title: 'Ad & Analytics',
       color: 'bg-gray-200',
       textColor: 'text-black',
-      image: '/images/brain.png',
+      image: '/images/services/analytics.png',
       imageAlt: 'Analytics background',
       description: 'Leverage data-driven insights to optimize your advertising campaigns and maximize ROI.'
     },
@@ -64,7 +68,7 @@ export default function ServicesPage() {
       title: 'Performance Marketing',
       color: 'bg-purple-600',
       textColor: 'text-white',
-      image: '/images/about.png',
+      image: '/images/services/performance-marketing.png',
       imageAlt: 'Performance marketing background',
       description: 'Drive measurable growth through strategic performance marketing campaigns.'
     },
@@ -73,7 +77,7 @@ export default function ServicesPage() {
       title: 'AI Integrated Marketing',
       color: 'bg-gray-200',
       textColor: 'text-black',
-      image: '/images/section-home/4.png',
+      image: '/images/services/ai-marketing.png',
       imageAlt: 'Visual design background',
       description: 'Harness the power of AI to automate and optimize your marketing efforts.'
     },
@@ -82,7 +86,7 @@ export default function ServicesPage() {
       title: 'Narrative Design',
       color: 'bg-gray-200',
       textColor: 'text-black',
-      image: '/images/brain.png',
+      image: '/images/services/narrative-design.png',
       imageAlt: 'Analytics background',
       description: 'Craft compelling brand narratives that connect emotionally with your audience.'
     },
@@ -91,7 +95,7 @@ export default function ServicesPage() {
       title: 'AI-Powered Branding',
       color: 'bg-purple-600',
       textColor: 'text-white',
-      image: '/images/about.png',
+      image: '/images/services/ai-branding.png',
       imageAlt: 'Performance marketing background',
       description: 'Transform your brand with intelligent, AI-driven branding solutions.'
     }
@@ -119,19 +123,65 @@ export default function ServicesPage() {
     setFormData({ name: '', email: '', mobile: '', city: '', service: '' })
   }
 
+  // Split text into words for animation
+  const subtitle = "Smart strategy. Sharp storytelling. Systems that scale with you"
+  const words = subtitle.split(' ')
+
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2,
+      }
+    }
+  }
+
+  const wordVariant = {
+    hidden: { 
+      opacity: 0, 
+      filter: 'blur(10px)',
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      filter: 'blur(0px)',
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.4, 0.25, 1]
+      }
+    }
+  }
+
   return (
     <main className="min-h-screen bg-black text-white px-8 py-16">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <div className="flex justify-between items-start mb-16">
+        <div ref={headerRef} className="flex justify-between items-start mb-16">
           <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-4">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6">
               <span className="italic">What</span> We Offer
             </h1>
-            <p className="text-lg text-gray-300 max-w-md">
-              Smart strategy. Sharp storytelling. Systems that scale with you
-            </p>
+            <motion.p 
+              className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-2xl leading-relaxed"
+              variants={container}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariant}
+                  className="inline-block mr-2"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.p>
           </div>
 
           {/* Circle Icon - Top Right */}

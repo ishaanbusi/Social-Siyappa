@@ -13,16 +13,22 @@ export default function FinalCTASection() {
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/contact.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+      {/* Background Video */}
+<div className="absolute inset-0 z-0 overflow-hidden">
+  <video
+  src="/images/contact-vid.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  webkit-playsinline="true"
+  preload="auto"
+  poster="/images/contact.png"
+  className="w-full h-full object-cover"
+/>
+
+</div>
+
 
       {/* Content */}
       <div className="relative z-10 w-full h-full min-h-screen px-6 md:px-16 py-12 md:py-20">

@@ -16,8 +16,8 @@ export default function PortfolioSection() {
   const portfolioImages = [
     { src: '/images/section-home/1.png', alt: 'Project 1', slug: 'ak-atelier' },
     { src: '/images/section-home/2.png', alt: 'Project 2', slug: 'riddhi-benani' },
-    { src: '/images/section-home/3.png', alt: 'Project 3', slug: 'project-3' },
-    { src: '/images/section-home/4.png', alt: 'Project 4', slug: 'project-4' },
+    { src: '/images/section-home/3.png', alt: 'Project 3', slug: 'ame' },
+    { src: '/images/section-home/4.png', alt: 'Project 4', slug: 'alinah' },
   ]
 
   return (

@@ -1,8 +1,9 @@
-import { Playfair_Display, Geist_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+// ✅ Heading Font - Playfair Display
 const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
@@ -10,9 +11,12 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// ✅ Body Copy Font - DM Sans
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -79,7 +83,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Basic meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="google-site-verification"
@@ -87,7 +90,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="manifest" href="/site.webmanifest" />
 
-        {/* ✅ Structured Data: JSON-LD Schema for a Digital Marketing Agency */}
+        {/* JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -138,9 +141,9 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      {/* ✅ Global Playfair Display applied */}
+      {/* Apply Fonts Globally */}
       <body
-        className={`${playfair.variable} ${geistMono.variable} antialiased bg-white text-gray-900 font-sans`}
+        className={`${playfair.variable} ${dmSans.variable} antialiased bg-white text-gray-900`}
       >
         <Header />
         {children}

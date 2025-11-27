@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function NeuromarketingSection() {
   const [brainLoaded, setBrainLoaded] = useState(false)
@@ -10,6 +11,34 @@ export default function NeuromarketingSection() {
     const timer = setTimeout(() => setBrainLoaded(true), 500)
     return () => clearTimeout(timer)
   }, [])
+
+  // Split text into characters for animation
+  const text = "Your brand sparks curiosity, then fades away."
+  const characters = text.split('')
+
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: 0.2,
+      }
+    }
+  }
+
+  const child = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
 
   return (
     <section className="relative h-[100dvh] overflow-hidden flex items-center justify-center">
@@ -32,11 +61,29 @@ export default function NeuromarketingSection() {
       <div className="relative w-full h-full flex items-center justify-center px-4 sm:px-8 z-10">
         {/* Mobile layout */}
         <div className="flex flex-col justify-between h-full py-12 md:hidden">
-          {/* Top: Heading */}
-          <div className="flex items-start justify-center pt-4">
-            <h1 className="text-2xl font-bold text-white leading-snug text-center px-4 drop-shadow-lg">
-              Your brand sparks curiosity, then <span className="italic font-light">fades away.</span>
-            </h1>
+          {/* Top: Animated Heading - Single Line */}
+          <div className="flex items-start justify-center pt-4 overflow-x-auto">
+            <motion.h1 
+              className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg whitespace-nowrap px-4"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {characters.map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={child}
+                  className="inline-block"
+                  style={{ 
+                    fontStyle: index >= 37 ? 'italic' : 'normal', 
+                    fontWeight: index >= 37 ? 300 : 700,
+                    marginRight: char === ' ' ? '0.25em' : '0'
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </motion.h1>
           </div>
 
           {/* Bottom: Text */}
@@ -55,11 +102,29 @@ export default function NeuromarketingSection() {
 
         {/* Desktop/tablet layout */}
         <div className="hidden md:block relative w-full h-full">
-          {/* Main Headline */}
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center px-6">
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white leading-tight drop-shadow-2xl">
-              Your brand sparks curiosity, then <span className="italic font-light">fades away.</span>
-            </h1>
+          {/* Main Headline with Animation - Single Line */}
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 px-6">
+            <motion.h1 
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-white drop-shadow-2xl whitespace-nowrap"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {characters.map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={child}
+                  className="inline-block"
+                  style={{ 
+                    fontStyle: index >= 37 ? 'italic' : 'normal', 
+                    fontWeight: index >= 37 ? 300 : 700,
+                    marginRight: char === ' ' ? '0.25em' : '0'
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </motion.h1>
           </div>
 
           {/* Left Text */}

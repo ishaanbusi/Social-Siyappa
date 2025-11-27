@@ -49,7 +49,7 @@ export default function ContactFormsSection() {
             
             {/* Name Field */}
             <div>
-              <label htmlFor="left-name" className="block text-sm font-medium mb-3">
+              <label htmlFor="left-name" className="block text-lg md:text-xl font-medium mb-3">
                 Name and Surname
               </label>
               <input
@@ -65,7 +65,7 @@ export default function ContactFormsSection() {
 
             {/* Email Field */}
             <div>
-              <label htmlFor="left-email" className="block text-sm font-medium mb-3">
+              <label htmlFor="left-email" className="block text-lg md:text-xl font-medium mb-3">
                 Email address
               </label>
               <input
@@ -81,7 +81,7 @@ export default function ContactFormsSection() {
 
             {/* Message Field */}
             <div>
-              <label htmlFor="left-message" className="block text-sm font-medium mb-3">
+              <label htmlFor="left-message" className="block text-lg md:text-xl font-medium mb-3">
                 Comment or Message
               </label>
               <textarea
@@ -95,11 +95,11 @@ export default function ContactFormsSection() {
               />
             </div>
 
-            {/* Submit Button */}
+            {/* Submit Button with Hover Color Inversion */}
             <div className="pt-4">
               <button
                 type="submit"
-                className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors"
+                className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white border-2 border-white transition-colors duration-300"
               >
                 Submit
               </button>
@@ -166,11 +166,11 @@ export default function ContactFormsSection() {
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button with Hover Color Inversion */}
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors"
+                  className="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-white hover:text-black border-2 border-black transition-colors duration-300"
                 >
                   Submit
                 </button>

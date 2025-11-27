@@ -104,7 +104,7 @@ export default function ChemistrySection() {
     </ul>
   </div>
   
-  <p className="mt-6 text-gray-400 text-xs sm:text-sm lg:text-base leading-relaxed group-hover:text-gray-300 transition-colors">
+  <p className="mt-3 text-gray-400 text-xs sm:text-sm lg:text-base leading-relaxed group-hover:text-gray-300 transition-colors">
     From first glance to final sale, we help your brand grow with precision and purpose.
   </p>
 

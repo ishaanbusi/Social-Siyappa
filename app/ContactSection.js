@@ -185,7 +185,7 @@ export default function ContactSection() {
             >
               <div className="relative w-64 h-80 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/1.png"
+                  src="/images/portrait-young-african-american-man-with-vr-glasses.jpg"
                   alt="Get in touch"
                   width={300}
                   height={400}

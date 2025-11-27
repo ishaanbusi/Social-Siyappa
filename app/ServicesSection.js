@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function ServicesSection({
   headline = 'You bring the substance',
@@ -42,15 +43,13 @@ export default function ServicesSection({
           {tagline}
         </p>
 
-        {ctaLabel && (
-          <button
-            type="button"
-            onClick={onCtaClick}
-            className="bg-white border-2 border-gray-900 text-gray-900 px-6 md:px-8 py-3 rounded-full font-medium text-base md:text-lg hover:bg-gray-900 hover:text-white transition-colors duration-300 shadow"
-          >
-            {ctaLabel}
-          </button>
-        )}
+        <Link
+  href="/services"
+  className="bg-white border-2 border-gray-900 text-gray-900 px-6 md:px-8 py-3 rounded-full font-medium text-base md:text-lg hover:bg-gray-900 hover:text-white transition-colors duration-300 shadow inline-block"
+>
+  {ctaLabel}
+</Link>
+
       </div>
 
       {/* Bottom center image */}
