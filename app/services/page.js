@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 export default function ServicesPage() {
@@ -15,95 +15,87 @@ export default function ServicesPage() {
   })
 
   const headerRef = useRef(null)
-  const isInView = useInView(headerRef, { once: true, margin: "-100px" })
+  const isInView = useInView(headerRef, { once: true, margin: '-100px' })
 
+  // ✅ UPDATED CONTENT
   const services = [
     {
       id: '01',
-      title: 'Branding Strategy & Voice',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'Brand Strategy & Voice',
       image: '/images/services/branding.png',
-      imageAlt: 'Branding strategy background',
-      description: 'Build a distinctive brand identity that resonates with your target audience and stands out in the market.'
+      imageAlt: 'Brand Strategy visuals',
+      description:
+        'Define what you stand for and how to say it. Positioning, messaging, and founder narrative clarity that aligns your entire brand.'
     },
     {
       id: '02',
-      title: 'Content Strategy & Campaign',
-      color: 'bg-purple-600',
-      textColor: 'text-white',
+      title: 'Content & Campaign Direction',
       image: '/images/services/content.png',
-      imageAlt: 'Content strategy background',
-      description: 'Create compelling content strategies that drive engagement and deliver measurable results.'
+      imageAlt: 'Content and campaign direction',
+      description:
+        'Content that connects and performs. Platform strategy, campaign planning, and AI-powered workflows built for consistency.'
     },
     {
       id: '03',
-      title: 'Website Design & Development',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'Website & Narrative Design',
       image: '/images/section-home/3.png',
-      imageAlt: 'Website development background',
-      description: 'Develop stunning, high-performance websites that convert visitors into customers.'
+      imageAlt: 'Website narrative design',
+      description:
+        'Structure your story with intent. Site messaging, conversion-focused copy, and story-led design for clarity and impact.'
     },
     {
       id: '04',
-      title: 'Visual Design & Production',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'Visual Identity & Creative Assets',
       image: '/images/services/visual-design.png',
-      imageAlt: 'Visual design background',
-      description: 'Craft visually stunning designs that capture attention and communicate your brand message.'
+      imageAlt: 'Visual identity design',
+      description:
+        'Design that looks good and sounds like you. Brand systems, social templates, creative assets, and founder presentation decks.'
     },
     {
       id: '05',
-      title: 'Ad & Analytics',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'Ad Creative & Performance Content',
       image: '/images/services/analytics.png',
-      imageAlt: 'Analytics background',
-      description: 'Leverage data-driven insights to optimize your advertising campaigns and maximize ROI.'
+      imageAlt: 'Ad creative visuals',
+      description:
+        'Scale reach without losing depth. High-performing ads, emails, and content that blends creativity with measurable performance.'
     },
     {
       id: '06',
-      title: 'Performance Marketing',
-      color: 'bg-purple-600',
-      textColor: 'text-white',
+      title: 'Humanised Frameworks™',
       image: '/images/services/performance-marketing.png',
-      imageAlt: 'Performance marketing background',
-      description: 'Drive measurable growth through strategic performance marketing campaigns.'
+      imageAlt: 'Frameworks system',
+      description:
+        'Consistency with confidence. Voice maps, POV lenses, and content archetypes that make team-wide communication effortless.'
     },
     {
       id: '07',
-      title: 'AI Integrated Marketing',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'AI Ads & AI Photoshoots',
       image: '/images/services/ai-marketing.png',
-      imageAlt: 'Visual design background',
-      description: 'Harness the power of AI to automate and optimize your marketing efforts.'
+      imageAlt: 'AI photoshoot visuals',
+      description:
+        'Your product, anywhere on earth—no studio needed. 20+ concepts, photoreal images, cinematic compositions, zero production hassle.'
     },
     {
       id: '08',
-      title: 'Narrative Design',
-      color: 'bg-gray-200',
-      textColor: 'text-black',
+      title: 'AI-Powered Branding',
       image: '/images/services/narrative-design.png',
-      imageAlt: 'Analytics background',
-      description: 'Craft compelling brand narratives that connect emotionally with your audience.'
+      imageAlt: 'AI branding visuals',
+      description:
+        'Pretty is nice. Clear is cash. AI-driven messaging, story, and tone systems your entire team can use and scale.'
     },
     {
       id: '09',
-      title: 'AI-Powered Branding',
-      color: 'bg-purple-600',
-      textColor: 'text-white',
+      title: 'AI Content & Strategy',
       image: '/images/services/ai-branding.png',
-      imageAlt: 'Performance marketing background',
-      description: 'Transform your brand with intelligent, AI-driven branding solutions.'
+      imageAlt: 'AI content creation visuals',
+      description:
+        'One strong idea, ten smart formats. Plan, script, produce, and publish weekly—on autopilot with AI-powered workflows.'
     }
   ]
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }))
@@ -111,86 +103,79 @@ export default function ServicesPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
     if (!formData.name || !formData.email || !formData.service) {
       alert('Please fill in all required fields')
       return
     }
-    
     console.log('Form submitted:', formData)
     alert('Thank you for your submission! We will get back to you soon.')
     setIsPopupOpen(false)
     setFormData({ name: '', email: '', mobile: '', city: '', service: '' })
   }
 
-  // Split text into words for animation
-  const subtitle = "Smart strategy. Sharp storytelling. Systems that scale with you"
+  const subtitle =
+    'Smart strategy. Sharp storytelling. Systems that scale with you'
   const words = subtitle.split(' ')
 
-  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2,
-      }
+      transition: { staggerChildren: 0.08, delayChildren: 0.2 }
     }
   }
 
   const wordVariant = {
-    hidden: { 
-      opacity: 0, 
-      filter: 'blur(10px)',
-      y: 20
-    },
+    hidden: { opacity: 0, filter: 'blur(10px)', y: 20 },
     visible: {
       opacity: 1,
       filter: 'blur(0px)',
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1]
-      }
+      transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
     }
   }
 
   return (
     <main className="min-h-screen bg-black text-white px-8 py-16">
       <div className="max-w-7xl mx-auto">
-        
-        {/* Header Section */}
+        {/* HEADER */}
         <div ref={headerRef} className="flex justify-between items-start mb-16">
           <div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6">
               <span className="italic">What</span> We Offer
             </h1>
-            <motion.p 
-              className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-2xl leading-relaxed"
-              variants={container}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-            >
-              {words.map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={wordVariant}
-                  className="inline-block mr-2"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.p>
+
+            <motion.p
+  className="
+    text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed
+    max-w-xl md:max-w-2xl
+    mx-auto
+    flex flex-wrap gap-x-2 gap-y-1
+    text-left md:text-center
+  "
+  variants={container}
+  initial="hidden"
+  animate={isInView ? "visible" : "hidden"}
+>
+  {words.map((word, index) => (
+    <motion.span
+      key={index}
+      variants={wordVariant}
+      className="inline-block"
+    >
+      {word}
+    </motion.span>
+  ))}
+</motion.p>
+
           </div>
 
-          {/* Circle Icon - Top Right */}
           <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-            <svg 
-              className="w-6 h-6 text-black transform rotate-45" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
+            <svg
+              className="w-6 h-6 text-black rotate-45"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
               viewBox="0 0 24 24"
             >
               <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -198,108 +183,99 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* SERVICES GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <div
               key={service.id}
-              className="flip-card-container h-64"
+              className="flip-card-container h-[340px] sm:h-[360px] md:h-[380px]"
               onMouseEnter={() => setHoveredCard(service.id)}
               onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setHoveredCard((prev) =>
+                    prev === service.id ? null : service.id
+                  )
+                }
+              }}
             >
-              {/* Flip Card Inner */}
-              <div className={`flip-card ${hoveredCard === service.id ? 'flipped' : ''}`}>
-                
-                {/* Front Face */}
-                <div className="flip-card-face flip-card-front rounded-3xl overflow-hidden shadow-lg">
-                  {/* Full Cover Background Image */}
+              <div
+                className={`flip-card ${
+                  hoveredCard === service.id ? 'flipped' : ''
+                }`}
+              >
+                {/* FRONT */}
+                <div className="flip-card-face flip-card-front rounded-3xl overflow-hidden shadow-xl">
                   <img
                     src={service.image}
                     alt={service.imageAlt}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-black/40" />
 
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
-
-                  {/* Card Content */}
-                  <div className="relative z-10 p-8 h-full flex flex-col justify-between">
-                    {/* Service Number */}
-                    <div className="mb-4">
-                      <span className="text-sm font-medium text-white opacity-70">
-                        {service.id}
-                      </span>
-                    </div>
-
-                    {/* Service Title */}
-                    <div className="flex-1 flex items-end">
-                      <h3 className="text-xl md:text-2xl font-semibold leading-tight text-white">
-                        {service.title}
-                      </h3>
-                    </div>
+                  <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                    <span className="text-sm text-white/80">{service.id}</span>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white leading-tight">
+                      {service.title}
+                    </h3>
                   </div>
                 </div>
 
-                {/* Back Face */}
-                <div className="flip-card-face flip-card-back rounded-3xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-600 to-purple-800">
-                  <div className="relative z-10 p-8 h-full flex flex-col justify-center items-center text-center text-white">
-                    <h4 className="text-xl font-semibold mb-4">{service.title}</h4>
-                    <p className="text-sm opacity-90 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+                {/* BACK */}
+                <div className="flip-card-face flip-card-back rounded-3xl bg-gradient-to-br from-purple-600 to-purple-800 shadow-xl p-6 flex flex-col items-center justify-center text-center">
+                  <h4 className="text-lg sm:text-xl font-semibold mb-3">
+                    {service.title}
+                  </h4>
+                  <p className="text-sm sm:text-base opacity-90 leading-relaxed px-2">
+                    {service.description}
+                  </p>
                 </div>
-
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* CTA */}
         <div className="text-center mt-20">
           <p className="text-gray-400 text-lg mb-8">
             Ready to scale your brand with strategy that works?
           </p>
-          <button 
+          <button
             onClick={() => setIsPopupOpen(true)}
-            className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+            className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all hover:scale-105"
           >
             Start Your Project
           </button>
         </div>
       </div>
 
-      {/* Popup Form */}
+      {/* POPUP FORM (same as before) */}
       {isPopupOpen && (
         <>
-          {/* Backdrop */}
           <div
             onClick={() => setIsPopupOpen(false)}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 animate-fadeIn"
           />
 
-          {/* Popup */}
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-4xl bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl z-50 border border-white/10 overflow-hidden animate-scaleIn max-h-[90vh] overflow-y-auto">
-            {/* Close button */}
+          <div className="fixed top-1/2 left-1/2 w-[90%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl shadow-2xl z-50 border border-white/10 overflow-hidden animate-scaleIn max-h-[90vh] overflow-y-auto">
+            {/* Close */}
             <button
               onClick={() => setIsPopupOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white z-10"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              ✕
             </button>
 
             <div className="flex flex-col md:flex-row">
-              {/* Form Section - Left */}
+              {/* LEFT - FORM */}
               <div className="w-full md:w-1/2 p-8">
-                {/* Form Header */}
-                <h3 className="text-2xl font-semibold text-white mb-2">We&apos;d love to hear from you!</h3>
+                <h3 className="text-2xl font-semibold text-white mb-2">
+                  We&apos;d love to hear from you!
+                </h3>
 
-                {/* Form */}
                 <div className="space-y-4 mt-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                    <label className="block text-sm text-gray-300 mb-1">
                       Name <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -307,13 +283,13 @@ export default function ServicesPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                      className="w-full px-4 py-2.5 bg-white border rounded-lg text-gray-900"
                       placeholder="Your name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                    <label className="block text-sm text-gray-300 mb-1">
                       Email <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -321,94 +297,93 @@ export default function ServicesPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                      className="w-full px-4 py-2.5 bg-white border rounded-lg text-gray-900"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">Mobile</label>
+                    <label className="block text-sm text-gray-300 mb-1">
+                      Mobile
+                    </label>
                     <input
                       type="tel"
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                      className="w-full px-4 py-2.5 bg-white border rounded-lg text-gray-900"
                       placeholder="Your phone number"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">City</label>
+                    <label className="block text-sm text-gray-300 mb-1">
+                      City
+                    </label>
                     <input
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder-gray-500"
+                      className="w-full px-4 py-2.5 bg-white border rounded-lg text-gray-900"
                       placeholder="Your city"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                    <label className="block text-sm text-gray-300 mb-1">
                       Services Required <span className="text-red-400">*</span>
                     </label>
+
                     <select
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-white border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-gray-900"
+                      className="w-full px-4 py-2.5 bg-white border rounded-lg text-gray-900"
                     >
                       <option value="">Select here</option>
-                      <option value="branding">Branding Strategy & Voice</option>
-                      <option value="content">Content Strategy & Campaign</option>
-                      <option value="web-design">Website Design & Development</option>
-                      <option value="visual">Visual Design & Production</option>
-                      <option value="analytics">Ad & Analytics</option>
-                      <option value="performance">Performance Marketing</option>
-                      <option value="ai-marketing">AI Integrated Marketing</option>
-                      <option value="narrative">Narrative Design</option>
-                      <option value="ai-branding">AI-Powered Branding</option>
+                      {services.map((s) => (
+                        <option key={s.id} value={s.title}>
+                          {s.title}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
                   <button
                     onClick={handleSubmit}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl mt-6 hover:scale-[1.02] active:scale-[0.98]"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 rounded-lg mt-6 hover:scale-[1.02]"
                   >
                     Submit
                   </button>
                 </div>
               </div>
 
-              {/* Image Section - Right */}
+              {/* RIGHT IMAGE */}
               <div className="hidden md:block w-1/2 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
                 <img
                   src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=1000&fit=crop"
-                  alt="Contact us"
+                  alt="Contact"
                   className="w-full h-full object-cover"
                 />
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/40" />
-                
-                {/* Decorative content on image */}
-                <div className="absolute bottom-8 left-8 right-8 text-white">
-                  <h4 className="text-2xl font-bold mb-2">Let&apos;s Create Together</h4>
-                  <p className="text-gray-200">Transform your vision into reality</p>
-                </div>
               </div>
             </div>
           </div>
         </>
       )}
 
+      {/* FLIP CARD CSS */}
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
+
         @keyframes scaleIn {
           from {
             opacity: 0;
@@ -419,6 +394,7 @@ export default function ServicesPage() {
             transform: translate(-50%, -50%) scale(1);
           }
         }
+
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
         }
@@ -426,20 +402,19 @@ export default function ServicesPage() {
           animation: scaleIn 0.3s ease-out;
         }
 
-        /* Flip Card Styles */
         .flip-card-container {
-          perspective: 1000px;
+          perspective: 1100px;
         }
 
         .flip-card {
-          position: relative;
           width: 100%;
           height: 100%;
-          transition: transform 0.6s;
           transform-style: preserve-3d;
+          transition: transform 0.6s;
+          position: relative;
         }
 
-        .flip-card.flipped {
+        .flipped {
           transform: rotateY(180deg);
         }
 
@@ -448,15 +423,20 @@ export default function ServicesPage() {
           width: 100%;
           height: 100%;
           backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-
-        .flip-card-front {
-          z-index: 2;
         }
 
         .flip-card-back {
           transform: rotateY(180deg);
+        }
+
+        /* Mobile improvements */
+        @media (max-width: 767px) {
+          .flip-card-container {
+            height: 300px !important;
+          }
+          .flip-card {
+            transition: transform 0.4s ease;
+          }
         }
       `}</style>
     </main>

@@ -33,19 +33,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Left Column - Navigation */}
           <div className="space-y-6">
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
+            <a href="" className="block text-white hover:text-gray-300 transition-colors text-lg">
               Home
             </a>
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
-              Blogs
+            <a href="/case-studies" className="block text-white hover:text-gray-300 transition-colors text-lg">
+              Case Studies
             </a>
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
+            <a href="/services" className="block text-white hover:text-gray-300 transition-colors text-lg">
               Service
             </a>
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
+            <a href="/about" className="block text-white hover:text-gray-300 transition-colors text-lg">
               About
             </a>
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
+            <a href="/contact" className="block text-white hover:text-gray-300 transition-colors text-lg">
               Contact Us
             </a>
           </div>

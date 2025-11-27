@@ -21,16 +21,16 @@ export default function PortfolioSection() {
   ]
 
   return (
-    <section className="w-full bg-black text-white py-16 sm:py-20">
+    <section className="w-full bg-black text-white py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-10 sm:mb-12">
-          <h2 className="leading-tight mb-3 sm:mb-4 text-3xl md:text-5xl lg:text-6xl text-center">
+        <div className="mb-8 sm:mb-10 lg:mb-12">
+          <h2 className="leading-tight mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center">
             <span className="font-light italic text-gray-400">See the work.</span>{' '}
             <span className="font-normal text-white">Feel the difference.</span>
           </h2>
 
-          <div className="text-gray-300 text-sm sm:text-base md:text-lg text-center">
+          <div className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg text-center px-4">
             <p className="mb-1">Every brand here started with siyappa</p>
             <p>and ended with a solid &quot;wah!&quot;</p>
           </div>
@@ -44,7 +44,13 @@ export default function PortfolioSection() {
             grabCursor={true}
             centeredSlides={true}
             slidesPerView="auto"
-            speed={900}
+            speed={700}
+            touchRatio={1}
+            touchAngle={45}
+            threshold={5}
+            longSwipesRatio={0.5}
+            longSwipesMs={300}
+            followFinger={true}
             coverflowEffect={{
               rotate: 15,
               stretch: 20,
@@ -52,7 +58,9 @@ export default function PortfolioSection() {
               modifier: 2,
               slideShadows: true,
             }}
-            navigation
+            navigation={{
+              enabled: true,
+            }}
             pagination={{
               clickable: true,
               dynamicBullets: true,
@@ -63,24 +71,66 @@ export default function PortfolioSection() {
               pauseOnMouseEnter: true,
             }}
             loop={true}
+            breakpoints={{
+              320: {
+                coverflowEffect: {
+                  rotate: 10,
+                  stretch: 10,
+                  depth: 100,
+                  modifier: 1.5,
+                },
+                navigation: {
+                  enabled: false,
+                },
+              },
+              640: {
+                coverflowEffect: {
+                  rotate: 12,
+                  stretch: 15,
+                  depth: 120,
+                  modifier: 1.8,
+                },
+                navigation: {
+                  enabled: false,
+                },
+              },
+              1024: {
+                coverflowEffect: {
+                  rotate: 15,
+                  stretch: 20,
+                  depth: 150,
+                  modifier: 2,
+                },
+                navigation: {
+                  enabled: true,
+                },
+              },
+            }}
             className="portfolio-swiper-centered"
           >
             {portfolioImages.map((image, index) => (
               <SwiperSlide key={index}>
-                <Link href={`/case-studies/${image.slug}`} className="slide-content group block">
+                <Link 
+                  href={`/case-studies/${image.slug}`} 
+                  className="slide-content group block"
+                  aria-label={`View ${image.alt}`}
+                >
                   <Image
                     src={image.src}
                     alt={image.alt}
                     width={1000}
                     height={500}
-                    className="object-cover w-full rounded-2xl transition-all duration-700 transform group-hover:scale-[1.05]"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 75vw, 60vw"
+                    className="object-cover w-full rounded-xl sm:rounded-2xl transition-all duration-700 transform group-hover:scale-[1.05] group-active:scale-[0.98]"
                     priority={index === 0}
+                    quality={85}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                   />
-                  <div className="absolute inset-0 transition-all duration-500 opacity-0 group-hover:opacity-30 bg-gradient-to-t from-black via-gray-700 to-transparent"></div>
+                  <div className="absolute inset-0 transition-all duration-500 opacity-0 group-hover:opacity-30 group-active:opacity-40 bg-gradient-to-t from-black via-gray-700 to-transparent rounded-xl sm:rounded-2xl"></div>
                   
-                  {/* Hover overlay with "View Project" text */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <span className="bg-white text-black px-6 py-3 rounded-full font-semibold text-sm sm:text-base transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  {/* Hover/Active overlay with "View Project" text */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
+                    <span className="bg-white text-black px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base transform translate-y-4 group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500 touch-manipulation">
                       View Project
                     </span>
                   </div>
@@ -89,19 +139,53 @@ export default function PortfolioSection() {
             ))}
           </Swiper>
         </div>
+
+        {/* Mobile Swipe Hint */}
+        <div className="block sm:hidden text-center mt-6">
+          <p className="text-gray-400 text-xs animate-pulse">
+            ← Swipe to explore →
+          </p>
+        </div>
       </div>
 
       <style jsx global>{`
         .portfolio-swiper-centered {
-          padding: 50px 0;
+          padding: 40px 0 50px;
+          touch-action: pan-y pinch-zoom;
+        }
+
+        @media (min-width: 640px) {
+          .portfolio-swiper-centered {
+            padding: 50px 0;
+          }
         }
 
         .portfolio-swiper-centered .swiper-slide {
-          width: 60%;
+          width: 90%;
           max-width: 800px;
-          transition: all 0.6s ease-in-out;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           opacity: 0.4;
-          transform: scale(0.8);
+          transform: scale(0.75);
+        }
+
+        @media (min-width: 640px) {
+          .portfolio-swiper-centered .swiper-slide {
+            width: 85%;
+            transform: scale(0.8);
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .portfolio-swiper-centered .swiper-slide {
+            width: 75%;
+            opacity: 0.4;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .portfolio-swiper-centered .swiper-slide {
+            width: 60%;
+          }
         }
 
         .portfolio-swiper-centered .swiper-slide-active {
@@ -112,91 +196,115 @@ export default function PortfolioSection() {
 
         .portfolio-swiper-centered .swiper-slide-prev,
         .portfolio-swiper-centered .swiper-slide-next {
-          opacity: 0.6;
-          transform: scale(0.85);
+          opacity: 0.5;
+          transform: scale(0.82);
+        }
+
+        @media (min-width: 1024px) {
+          .portfolio-swiper-centered .swiper-slide-prev,
+          .portfolio-swiper-centered .swiper-slide-next {
+            opacity: 0.6;
+            transform: scale(0.85);
+          }
         }
 
         .portfolio-swiper-centered .slide-content {
           position: relative;
-          border-radius: 1rem;
+          border-radius: 0.75rem;
           overflow: hidden;
-          transition: all 0.5s ease-in-out;
+          transition: all 0.4s ease-in-out;
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
         }
 
-        .portfolio-swiper-centered .slide-content:hover {
-          transform: translateY(-10px);
+        @media (min-width: 640px) {
+          .portfolio-swiper-centered .slide-content {
+            border-radius: 1rem;
+          }
         }
 
+        @media (hover: hover) and (pointer: fine) {
+          .portfolio-swiper-centered .slide-content:hover {
+            transform: translateY(-10px);
+          }
+        }
+
+        /* Active state for touch devices */
+        @media (hover: none) and (pointer: coarse) {
+          .portfolio-swiper-centered .slide-content:active {
+            transform: scale(0.98);
+          }
+        }
+
+        /* Navigation buttons - hidden on mobile */
         .portfolio-swiper-centered .swiper-button-next,
         .portfolio-swiper-centered .swiper-button-prev {
-          color: white;
-          background: rgba(0, 0, 0, 0.6);
-          width: 45px;
-          height: 45px;
-          border-radius: 50%;
-          transition: all 0.4s ease;
+          display: none;
         }
 
-        .portfolio-swiper-centered .swiper-button-next:hover,
-        .portfolio-swiper-centered .swiper-button-prev:hover {
-          background: rgba(255, 255, 255, 0.15);
-          transform: scale(1.1);
+        @media (min-width: 1024px) {
+          .portfolio-swiper-centered .swiper-button-next,
+          .portfolio-swiper-centered .swiper-button-prev {
+            display: flex;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+          }
+
+          .portfolio-swiper-centered .swiper-button-next:hover,
+          .portfolio-swiper-centered .swiper-button-prev:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+          }
+
+          .portfolio-swiper-centered .swiper-button-next::after,
+          .portfolio-swiper-centered .swiper-button-prev::after {
+            font-size: 20px;
+            font-weight: bold;
+          }
         }
 
-        .portfolio-swiper-centered .swiper-button-next::after,
-        .portfolio-swiper-centered .swiper-button-prev::after {
-          font-size: 20px;
-          font-weight: bold;
+        /* Pagination dots */
+        .portfolio-swiper-centered .swiper-pagination {
+          bottom: 10px;
         }
 
         .portfolio-swiper-centered .swiper-pagination-bullet {
           background: white;
           opacity: 0.4;
-          width: 10px;
-          height: 10px;
+          width: 8px;
+          height: 8px;
           transition: all 0.3s ease;
+          margin: 0 4px;
+        }
+
+        @media (min-width: 640px) {
+          .portfolio-swiper-centered .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+          }
         }
 
         .portfolio-swiper-centered .swiper-pagination-bullet-active {
           opacity: 1;
           background: white;
-          transform: scale(1.2);
+          transform: scale(1.3);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-          .portfolio-swiper-centered .swiper-slide {
-            width: 75%;
-            max-width: 700px;
-          }
+        /* Improve touch scrolling performance */
+        .portfolio-swiper-centered .swiper-wrapper {
+          will-change: transform;
         }
 
-        @media (max-width: 768px) {
-          .portfolio-swiper-centered {
-            padding: 30px 0;
-          }
-          .portfolio-swiper-centered .swiper-slide {
-            width: 85%;
-            transform: scale(0.85);
-          }
-        }
-
-        @media (max-width: 640px) {
-          .portfolio-swiper-centered .swiper-slide {
-            width: 90%;
-          }
-
-          .portfolio-swiper-centered .swiper-button-next,
-          .portfolio-swiper-centered .swiper-button-prev {
-            width: 38px;
-            height: 38px;
-          }
-
-          .portfolio-swiper-centered .swiper-button-next::after,
-          .portfolio-swiper-centered .swiper-button-prev::after {
-            font-size: 16px;
-          }
+        /* Prevent text selection during swipe */
+        .portfolio-swiper-centered * {
+          -webkit-user-select: none;
+          user-select: none;
+          -webkit-touch-callout: none;
         }
       `}</style>
     </section>
