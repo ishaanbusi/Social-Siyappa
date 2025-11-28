@@ -46,7 +46,7 @@ export default function OurHowSection() {
     {/* Single rectangular image replacing the collage */}
     <div className="w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-xl">
       <Image
-        src="/images/about-2.png" // Replace with your image path
+        src="/images/about-new.png" // Replace with your image path
         alt="Our Image"
         width={384}
         height={384}

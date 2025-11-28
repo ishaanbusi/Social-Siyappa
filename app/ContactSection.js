@@ -34,7 +34,7 @@ export default function ContactSection() {
     { src: '/images/1.png', alt: 'Contact Card 1', rotation: -12, translateY: 4 },
     { src: '/images/2.jpg', alt: 'Contact Card 2', rotation: -6, translateY: 2 },
     { src: '/images/3.jpg', alt: 'Contact Card 3', rotation: 0, translateY: 0 },
-    { src: '/images/4.jpg', alt: 'Contact Card 4', rotation: 6, translateY: 2 }
+    { src: '/images/portrait-young-african-american-man-with-vr-glasses.jpg', alt: 'Contact Card 4', rotation: 6, translateY: 2 }
   ]
 
   const cardVariants = {
@@ -208,14 +208,13 @@ export default function ContactSection() {
               </motion.button>
             </div>
 
-            {/* Right Image - hidden on mobile */}
             <motion.div
               initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: prefersReducedMotion ? 0 : 0.8 }}
               className="hidden lg:block relative flex-shrink-0"
             >
-              <div className="relative w-56 xl:w-64 h-72 xl:h-80 rounded-2xl overflow-hidden shadow-2xl">
+              {/* <div className="relative w-56 xl:w-64 h-72 xl:h-80 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/portrait-young-african-american-man-with-vr-glasses.jpg"
                   alt="Contact us - Team member"
@@ -228,7 +227,7 @@ export default function ContactSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 <div className="absolute inset-0 border-2 border-white/20 rounded-2xl" />
-              </div>
+              </div> */}
               
               <motion.div
                 animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
