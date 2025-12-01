@@ -9,10 +9,10 @@ export default function RiddhiBenaniGrid() {
         
         {/* Large Intro Text */}
         <div className="rounded-3xl shadow-xl bg-white p-14 flex flex-col justify-center">
-          <h3 className="text-4xl font-semibold mb-6 tracking-tight">
+          <h3 className="text-4xl text-black font-semibold mb-6 tracking-tight">
             Riddhi Benani – A New Chapter
           </h3>
-          <p className="text-lg leading-relaxed text-gray-600 max-w-[75%]">
+          <p className="text-lg leading-relaxed text-black max-w-[75%]">
             A creative evolution rooted in clarity, refinement, and meaningful expression.
             A brand language that is timeless, modern, and intentionally designed.
           </p>
@@ -42,7 +42,7 @@ export default function RiddhiBenaniGrid() {
 
         {/* Quote Block */}
         <div className="break-inside-avoid rounded-3xl shadow-xl bg-white p-12 flex items-center text-center justify-center">
-          <p className="text-xl text-gray-700 leading-relaxed max-w-[75%]">
+          <p className="text-xl text-black leading-relaxed max-w-[75%]">
             “Design that breathes, moves, and speaks — crafted with honesty and intention.”
           </p>
         </div>
@@ -61,8 +61,8 @@ export default function RiddhiBenaniGrid() {
 
         {/* Studio Vision */}
         <div className="break-inside-avoid rounded-3xl shadow-xl bg-white p-14 flex flex-col justify-center text-left">
-          <h3 className="text-4xl font-semibold mb-6">Studio Vision</h3>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <h3 className="text-4xl text-black font-semibold mb-6">Studio Vision</h3>
+          <p className="text-lg text-black leading-relaxed">
             A practice shaped by balance, gentle storytelling, meaningful identity design,
             and a visual language that blends emotion with structure.
           </p>

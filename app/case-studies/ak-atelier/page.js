@@ -14,8 +14,8 @@ export default function AKAtelierGrid() {
 
       {/* TITLE */}
       <div className="text-center mb-20">
-        <h1 className="text-6xl font-semibold tracking-tight mb-4">AK Atelier</h1>
-        <p className="text-xl text-gray-600 leading-relaxed max-w-[60%] mx-auto">
+        <h1 className="text-6xl text-black font-semibold tracking-tight mb-4">AK Atelier</h1>
+        <p className="text-xl text-black leading-relaxed max-w-[60%] mx-auto">
           A brand built on timeless silhouettes, refined craftsmanship & modern identity.
         </p>
       </div>
@@ -49,8 +49,8 @@ export default function AKAtelierGrid() {
 
         {/* Card 4 */}
         <div className="break-inside-avoid rounded-3xl overflow-hidden shadow-xl bg-white p-12">
-          <h3 className="text-4xl font-semibold mb-6">The Essence</h3>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <h3 className="text-4xl text-black font-semibold mb-6">The Essence</h3>
+          <p className="text-lg text-black leading-relaxed">
             Pure shapes, thoughtful forms and an identity driven by elegance.
           </p>
         </div>

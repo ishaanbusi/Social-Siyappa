@@ -18,8 +18,8 @@ export default function AlinahGrid() {
 
         {/* Intro Text Block */}
         <div className="md:col-span-3 rounded-3xl shadow-xl bg-white p-14 flex flex-col justify-center">
-          <h3 className="text-4xl font-semibold mb-6">Alinah – Crafted for Calm Living</h3>
-          <p className="text-lg leading-relaxed text-gray-600 max-w-[75%]">
+          <h3 className="text-4xl text-black font-semibold mb-6">Alinah – Crafted for Calm Living</h3>
+          <p className="text-lg leading-relaxed text-black max-w-[75%]">
             A brand rooted in harmony, soft elegance, and intentional aesthetics.  
             Alinah blends nature, clarity, and modern craft to create an immersive visual identity.
           </p>
@@ -40,7 +40,7 @@ export default function AlinahGrid() {
 
         {/* Quote Tile */}
         <div className="break-inside-avoid rounded-3xl shadow-xl bg-white p-12 flex items-center justify-center text-center">
-          <p className="text-xl leading-relaxed text-gray-700 max-w-[85%]">
+          <p className="text-xl leading-relaxed text-black max-w-[85%]">
             “Where nature’s stillness meets thoughtful design — a visual identity that breathes.”
           </p>
         </div>

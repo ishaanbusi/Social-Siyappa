@@ -160,7 +160,7 @@ export default function ContactSection() {
                 transition={{ delay: prefersReducedMotion ? 0 : 0.3, duration: prefersReducedMotion ? 0 : 0.6 }}
                 className="text-white font-light leading-tight"
                 style={{
-                  fontSize: 'clamp(2rem, 8vw, 3.75rem)',
+                  fontSize: 'clamp(4rem, 8vw, 3.75rem)',
                   marginBottom: 'clamp(0.75rem, 3vw, 1rem)',
                 }}
               >
@@ -170,7 +170,7 @@ export default function ContactSection() {
                 </span>
               </motion.h2>
 
-              <motion.p
+              {/* <motion.p
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: prefersReducedMotion ? 0 : 0.6 }}
@@ -180,7 +180,7 @@ export default function ContactSection() {
                 }}
               >
                 Ready to transform your brand? Schedule a call and let&apos;s create something amazing together.
-              </motion.p>
+              </motion.p> */}
 
               <motion.button
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
