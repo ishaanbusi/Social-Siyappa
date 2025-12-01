@@ -18,80 +18,156 @@ export default function ServicesPage() {
   const isInView = useInView(headerRef, { once: true, margin: '-100px' })
 
   // ✅ UPDATED CONTENT
+  // const services = [
+  //   {
+  //     id: '01',
+  //     title: 'Brand Strategy & Voice',
+  //     image: '/images/services/branding.png',
+  //     imageAlt: 'Brand Strategy visuals',
+  //     description:
+  //       'Define what you stand for and how to say it. Positioning, messaging, and founder narrative clarity that aligns your entire brand.'
+  //   },
+  //   {
+  //     id: '02',
+  //     title: 'Content & Campaign Direction',
+  //     image: '/images/services/content.png',
+  //     imageAlt: 'Content and campaign direction',
+  //     description:
+  //       'Content that connects and performs. Platform strategy, campaign planning, and AI-powered workflows built for consistency.'
+  //   },
+  //   {
+  //     id: '03',
+  //     title: 'Website & Narrative Design',
+  //     image: '/images/section-home/3.png',
+  //     imageAlt: 'Website narrative design',
+  //     description:
+  //       'Structure your story with intent. Site messaging, conversion-focused copy, and story-led design for clarity and impact.'
+  //   },
+  //   {
+  //     id: '04',
+  //     title: 'Visual Identity & Creative Assets',
+  //     image: '/images/services/visual-design.png',
+  //     imageAlt: 'Visual identity design',
+  //     description:
+  //       'Design that looks good and sounds like you. Brand systems, social templates, creative assets, and founder presentation decks.'
+  //   },
+  //   {
+  //     id: '05',
+  //     title: 'Ad Creative & Performance Content',
+  //     image: '/images/services/analytics.png',
+  //     imageAlt: 'Ad creative visuals',
+  //     description:
+  //       'Scale reach without losing depth. High-performing ads, emails, and content that blends creativity with measurable performance.'
+  //   },
+  //   {
+  //     id: '06',
+  //     title: 'Humanised Frameworks™',
+  //     image: '/images/services/performance-marketing.png',
+  //     imageAlt: 'Frameworks system',
+  //     description:
+  //       'Consistency with confidence. Voice maps, POV lenses, and content archetypes that make team-wide communication effortless.'
+  //   },
+  //   {
+  //     id: '07',
+  //     title: 'AI Ads & AI Photoshoots',
+  //     image: '/images/services/ai-marketing.png',
+  //     imageAlt: 'AI photoshoot visuals',
+  //     description:
+  //       'Your product, anywhere on earth—no studio needed. 20+ concepts, photoreal images, cinematic compositions, zero production hassle.'
+  //   },
+  //   {
+  //     id: '08',
+  //     title: 'AI-Powered Branding',
+  //     image: '/images/services/narrative-design.png',
+  //     imageAlt: 'AI branding visuals',
+  //     description:
+  //       'Pretty is nice. Clear is cash. AI-driven messaging, story, and tone systems your entire team can use and scale.'
+  //   },
+  //   {
+  //     id: '09',
+  //     title: 'AI Content & Strategy',
+  //     image: '/images/services/ai-branding.png',
+  //     imageAlt: 'AI content creation visuals',
+  //     description:
+  //       'One strong idea, ten smart formats. Plan, script, produce, and publish weekly—on autopilot with AI-powered workflows.'
+  //   }
+  // ]
+
   const services = [
-    {
-      id: '01',
-      title: 'Brand Strategy & Voice',
-      image: '/images/services/branding.png',
-      imageAlt: 'Brand Strategy visuals',
-      description:
-        'Define what you stand for and how to say it. Positioning, messaging, and founder narrative clarity that aligns your entire brand.'
-    },
-    {
-      id: '02',
-      title: 'Content & Campaign Direction',
-      image: '/images/services/content.png',
-      imageAlt: 'Content and campaign direction',
-      description:
-        'Content that connects and performs. Platform strategy, campaign planning, and AI-powered workflows built for consistency.'
-    },
-    {
-      id: '03',
-      title: 'Website & Narrative Design',
-      image: '/images/section-home/3.png',
-      imageAlt: 'Website narrative design',
-      description:
-        'Structure your story with intent. Site messaging, conversion-focused copy, and story-led design for clarity and impact.'
-    },
-    {
-      id: '04',
-      title: 'Visual Identity & Creative Assets',
-      image: '/images/services/visual-design.png',
-      imageAlt: 'Visual identity design',
-      description:
-        'Design that looks good and sounds like you. Brand systems, social templates, creative assets, and founder presentation decks.'
-    },
-    {
-      id: '05',
-      title: 'Ad Creative & Performance Content',
-      image: '/images/services/analytics.png',
-      imageAlt: 'Ad creative visuals',
-      description:
-        'Scale reach without losing depth. High-performing ads, emails, and content that blends creativity with measurable performance.'
-    },
-    {
-      id: '06',
-      title: 'Humanised Frameworks™',
-      image: '/images/services/performance-marketing.png',
-      imageAlt: 'Frameworks system',
-      description:
-        'Consistency with confidence. Voice maps, POV lenses, and content archetypes that make team-wide communication effortless.'
-    },
-    {
-      id: '07',
-      title: 'AI Ads & AI Photoshoots',
-      image: '/images/services/ai-marketing.png',
-      imageAlt: 'AI photoshoot visuals',
-      description:
-        'Your product, anywhere on earth—no studio needed. 20+ concepts, photoreal images, cinematic compositions, zero production hassle.'
-    },
-    {
-      id: '08',
-      title: 'AI-Powered Branding',
-      image: '/images/services/narrative-design.png',
-      imageAlt: 'AI branding visuals',
-      description:
-        'Pretty is nice. Clear is cash. AI-driven messaging, story, and tone systems your entire team can use and scale.'
-    },
-    {
-      id: '09',
-      title: 'AI Content & Strategy',
-      image: '/images/services/ai-branding.png',
-      imageAlt: 'AI content creation visuals',
-      description:
-        'One strong idea, ten smart formats. Plan, script, produce, and publish weekly—on autopilot with AI-powered workflows.'
-    }
-  ]
+  {
+    id: '01',
+    title: 'Brand Strategy & Voice',
+    image: '/images/services/branding.png',
+    imageAlt: 'Brand Strategy visuals',
+    description:
+      'Define what you stand for  and how to say it. → Positioning, messaging, and founder narrative clarity.'
+  },
+  {
+    id: '02',
+    title: 'Content & Campaign Direction',
+    image: '/images/services/content.png',
+    imageAlt: 'Content and campaign direction',
+    description:
+      'Content that connects and performs. → Platform strategy, campaigns, and AI-powered workflows.'
+  },
+  {
+    id: '03',
+    title: 'Website & Narrative Design',
+    image: '/images/section-home/3.png',
+    imageAlt: 'Website narrative design',
+    description:
+      'Structure your story with intent. → Site messaging, conversion copy, and story-led design.'
+  },
+  {
+    id: '04',
+    title: 'Visual Identity & Creative Assets',
+    image: '/images/services/visual-design.png',
+    imageAlt: 'Visual identity design',
+    description:
+      'Design that looks good and sounds like you. → Brand systems, social design, and founder decks.'
+  },
+  {
+    id: '05',
+    title: 'Ad Creative & Performance Content',
+    image: '/images/services/analytics.png',
+    imageAlt: 'Ad creative visuals',
+    description:
+      'Scale reach without losing depth. → Ads, emails, and performance-driven campaigns.'
+  },
+  {
+    id: '06',
+    title: 'Humanised Frameworks™',
+    image: '/images/services/performance-marketing.png',
+    imageAlt: 'Frameworks system',
+    description:
+      'Consistency with confidence. → Voice maps, POV lenses, and content archetypes.'
+  },
+  {
+    id: '07',
+    title: 'AI Ads & AI Photoshoots',
+    image: '/images/services/ai-marketing.png',
+    imageAlt: 'AI photoshoot visuals',
+    description:
+      'Your product, anywhere on earth no studio needed. → 20+ concepts, photoreal visuals, zero drama.'
+  },
+  {
+    id: '08',
+    title: 'AI-Powered Branding',
+    image: '/images/services/narrative-design.png',
+    imageAlt: 'AI branding visuals',
+    description:
+      'Pretty is nice. Clear is cash. → Messaging, story, and tone your team can own.'
+  },
+  {
+    id: '09',
+    title: 'AI Content & Strategy',
+    image: '/images/services/ai-branding.png',
+    imageAlt: 'AI content creation visuals',
+    description:
+      'One strong idea, ten smart formats. → Plan, script, ship  weekly, on autopilot.'
+  }
+];
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target

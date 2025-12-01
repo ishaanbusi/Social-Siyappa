@@ -30,26 +30,27 @@ export default function OurWhySection() {
           }`}
         >
           {/* Translucent Card */}
-          <div className="backdrop-blur-md bg-white/10 rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
-            <div className="space-y-6 text-right">
-              <h2 className="text-5xl md:text-6xl font-light text-white leading-tight">
-                Our <span className="italic">Why</span>
-              </h2>
-              
-              <p className="text-xl md:text-2xl text-gray-100 leading-relaxed">
-                Because people don&apos;t connect with content <br />
-                <span className="italic text-blue-300 font-medium">
-                  They connect with emotion.
-                </span>
-              </p>
-              
-              <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl lg:ml-auto">
-                We believe clarity builds trust, and trust builds brands. We&apos;re
-                here for the founders, creators, and rebels who want to say
-                something that actually matters.
-              </p>
-            </div>
-          </div>
+          <div className="backdrop-blur-md bg-white/10 rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20 max-w-xl mx-auto">
+  <div className="space-y-6 text-right">
+    <h2 className="text-5xl md:text-6xl font-light text-white leading-tight">
+      Our <span className="italic">Why</span>
+    </h2>
+
+    <p className="text-xl md:text-2xl text-gray-100 leading-relaxed">
+      Because people don&apos;t connect with content <br />
+      <span className="italic text-blue-300 font-medium">
+        They connect with emotion.
+      </span>
+    </p>
+
+    <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl lg:ml-auto">
+      We believe clarity builds trust, and trust builds brands. We&apos;re
+      here for the founders, creators, and rebels who want to say
+      something that actually matters.
+    </p>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
