@@ -1,6 +1,6 @@
 import HeroSection from "./HeroSection";
 import HeroSectionNext from "./HeroSectionNext";
-import AnimatedSection from "../components/AnimatedSection";
+import AnimatedSection from "../../components/AnimatedSection";
 
 export default function CaseStudiesPage() {
   return (
