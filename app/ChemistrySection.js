@@ -150,7 +150,7 @@ export default function ChemistrySection() {
               style={{ willChange: hoveredCard === 'main' ? 'transform' : 'auto' }}
             >
               <Image
-                src="/images/home-bg.jpg"
+                src="/images/home-bg.png"
                 alt="Chemistry and collaboration visual"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"

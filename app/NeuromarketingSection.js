@@ -61,73 +61,68 @@ export default function NeuromarketingSection() {
 
       {/* Main Content Container */}
       <div className="relative w-full h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 z-10">
-        {/* Mobile layout - optimized */}
-        <div className="flex flex-col justify-between h-full py-8 sm:py-12 md:hidden w-full max-w-2xl">
-          {/* Top: Animated Heading - Responsive wrapping */}
-          <div className="flex items-start justify-center pt-2 sm:pt-4">
-            <motion.h1 
-              className="font-bold text-white text-center leading-tight px-2"
-              style={{
-                fontSize: 'clamp(1.25rem, 5vw, 1.75rem)',
-                textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 4px 16px rgba(0,0,0,0.6)',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-              variants={container}
-              initial="hidden"
-              animate="visible"
-            >
-              {characters.map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={child}
-                  className="inline-block"
-                  style={{ 
-                    fontStyle: index >= 37 ? 'italic' : 'normal', 
-                    fontWeight: index >= 37 ? 300 : 700,
-                    marginRight: char === ' ' ? '0.25em' : '0',
-                    willChange: prefersReducedMotion ? 'auto' : 'opacity, transform',
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))}
-            </motion.h1>
-          </div>
+        {/* Mobile layout - text at extreme bottom */}
+<div className="relative h-full w-full md:hidden max-w-xl mx-auto">
 
-          {/* Bottom: Text - improved mobile spacing */}
-          <div className="flex flex-col gap-4 sm:gap-6 text-center px-2 pb-6 sm:pb-8">
-            <p 
-              className="text-white leading-relaxed font-light"
-              style={{
-                fontSize: 'clamp(0.9rem, 3.5vw, 1.125rem)',
-                textShadow: '0 2px 6px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.8)',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              People remember what moves them: stories that stir emotion, design that feels familiar, and messages that earn trust.
-            </p>
-            <p 
-              className="text-white leading-relaxed font-light"
-              style={{
-                fontSize: 'clamp(0.9rem, 3.5vw, 1.125rem)',
-                textShadow: '0 2px 6px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.8)',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              We use the science of attention and the art of persuasion to turn curiosity into conversion.
-            </p>
-            <p 
-              className="text-white leading-relaxed font-light"
-              style={{
-                fontSize: 'clamp(0.9rem, 3.5vw, 1.125rem)',
-                textShadow: '0 2px 6px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.8)',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              Because when emotion meets logic, buying becomes instinct.
-            </p>
-          </div>
-        </div>
+  {/* Headline near top */}
+  <div className="pt-8 px-4 flex justify-center">
+    <motion.h1
+      className="font-bold text-white text-center leading-snug max-w-[90%]"
+      style={{
+        fontSize: 'clamp(1.35rem, 6vw, 1.9rem)',
+        textShadow: '0 2px 10px rgba(0,0,0,0.9)',
+      }}
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
+      {characters.map((char, index) => (
+        <motion.span
+          key={index}
+          variants={child}
+          className="inline-block"
+          style={{
+            fontStyle: index >= 37 ? 'italic' : 'normal',
+            fontWeight: index >= 37 ? 300 : 700,
+            marginRight: char === ' ' ? '0.22em' : '0',
+          }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
+    </motion.h1>
+  </div>
+
+  {/* Bottom text — FIXED TO EXTREME BOTTOM */}
+  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center flex flex-col gap-4">
+
+    <p className="text-white leading-relaxed font-light"
+      style={{
+        fontSize: 'clamp(0.85rem, 3.1vw, 1.00rem)',
+        textShadow: '0 2px 8px rgba(0,0,0,1)',
+      }}>
+      People remember what moves them: stories that stir emotion, design that feels familiar, and messages that earn trust.
+    </p>
+
+    <p className="text-white leading-relaxed font-light"
+      style={{
+        fontSize: 'clamp(0.85rem, 3.1vw, 1.00rem)',
+        textShadow: '0 2px 8px rgba(0,0,0,1)',
+      }}>
+      We use the science of attention and the art of persuasion to turn curiosity into conversion.
+    </p>
+
+    {/* <p className="text-white leading-relaxed font-light"
+      style={{
+        fontSize: 'clamp(0.95rem, 3.8vw, 1.15rem)',
+        textShadow: '0 2px 8px rgba(0,0,0,1)',
+      }}>
+      Because when emotion meets logic, buying becomes instinct.
+    </p> */}
+  </div>
+
+</div>
+
 
         {/* Desktop/tablet layout - optimized */}
         <div className="hidden md:block relative w-full h-full max-w-7xl mx-auto">

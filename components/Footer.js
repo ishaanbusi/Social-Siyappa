@@ -89,11 +89,7 @@ export default function Footer() {
             <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg">
               Cookies Policy / Settings
             </a>
-            <a href="#" className="block text-white hover:text-gray-300 transition-colors text-lg flex items-center">
-              Locations
-              <span className="ml-2 text-gray-500 text-sm">...</span>
-              <span className="ml-1 text-gray-500">&gt;</span>
-            </a>
+            
           </div>
 
           {/* Right Column - Logo & Copyright */}
@@ -110,7 +106,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-sm tracking-wider">© 2024 Social Siyappa. All rights reserved.</p>
+            <p className="text-sm tracking-wider">© 2025 Social Siyappa. All rights reserved.</p>
           </div>
 
         </div>

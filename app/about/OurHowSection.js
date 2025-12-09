@@ -50,7 +50,8 @@ export default function OurHowSection() {
         alt="Our Image"
         width={384}
         height={384}
-        className="w-full h-full object-cover"
+        className="w-80 h-80 md:w-96 md:h-96 rounded-3xl object-cover shadow-2xl 
+             transition-transform duration-500 ease-out hover:scale-105"
       />
     </div>
   </div>
