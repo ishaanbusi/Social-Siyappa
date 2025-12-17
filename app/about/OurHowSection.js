@@ -43,15 +43,19 @@ export default function OurHowSection() {
         {/* Right Side - Collage Visual */}
         <div className="flex justify-center lg:justify-end">
   <div className="relative">
-    {/* Single rectangular image replacing the collage */}
-    <div className="w-80 h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-xl">
+    <div className="w-80 h-80 md:w-96 md:h-96 overflow-hidden rounded-3xl shadow-2xl">
       <Image
-        src="/images/about-new.png" // Replace with your image path
+        src="/images/about-new.png"
         alt="Our Image"
         width={384}
         height={384}
-        className="w-80 h-80 md:w-96 md:h-96 rounded-3xl object-cover shadow-2xl 
-             transition-transform duration-500 ease-out hover:scale-105"
+        className="
+          w-full h-full
+          object-cover
+          transition-transform duration-700
+          ease-[cubic-bezier(0.16,1,0.3,1)]
+          hover:scale-110
+        "
       />
     </div>
   </div>

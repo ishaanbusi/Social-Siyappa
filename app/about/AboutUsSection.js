@@ -30,20 +30,24 @@ export default function AboutUsSection() {
 
         {/* Right Brain Visual */}
        <div className="flex justify-center lg:justify-end">
-  <div className="relative">
-    {/* Replace gradient card & brain with a single image */}
+  <div className="relative overflow-hidden rounded-3xl">
     <Image
-      src="/images/brain-1.png" // replace with your image path
+      src="/images/brain-1.png"
       alt="Brain"
-        width={384} 
-        height={384}
-      className="w-80 h-80 md:w-96 md:h-96 rounded-3xl object-cover shadow-2xl 
-             transition-transform duration-500 ease-out hover:scale-105"
+      width={384}
+      height={384}
+      className="
+        w-80 h-80 md:w-96 md:h-96
+        object-cover shadow-2xl
+        transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+        hover:scale-110
+      "
     />
   </div>
 </div>
 
-      </div>
+</div>
+
     </section>
   )
 }
