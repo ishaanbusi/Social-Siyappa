@@ -95,7 +95,7 @@ export default function Footer() {
           {/* Right Column - Logo & Copyright */}
           <div className="flex flex-col items-start md:items-end">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-74 h-74 relative">
+              {/* <div className="w-74 h-74 relative">
                 <Image
                   src="/images/footer-logo.png"
                   alt="Social Siyappa Logo"
@@ -103,7 +103,7 @@ export default function Footer() {
                   className="object-contain"
                   priority
                 />
-              </div>
+              </div> */}
             </div>
 
             <p className="text-sm tracking-wider">© 2025 Social Siyappa. All rights reserved.</p>
