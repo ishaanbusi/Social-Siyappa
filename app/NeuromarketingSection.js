@@ -187,17 +187,7 @@ export default function NeuromarketingSection() {
               art of persuasion to turn curiosity into<br />
               conversion.
             </p>
-            <p 
-              className="text-white leading-relaxed font-light mt-4"
-              style={{
-                fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
-                textShadow: '0 3px 8px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8)',
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              Because when emotion meets logic,<br />
-              buying becomes instinct.
-            </p>
+            
           </div>
         </div>
       </div>
